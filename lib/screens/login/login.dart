@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../signup/signup.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  const Login({Key? key});
 
   @override
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     var unameControl = TextEditingController();
     var passControl = TextEditingController();
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "Login",
-          style: GoogleFonts.poppins(fontSize: 22),
-        ),
-        elevation: 0,
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Text(
+                'Login',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.start,
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.only(left: 30.0),
               child: Text(
                 'Username',
-                style: GoogleFonts.ptSansCaption(
-                  textStyle: TextStyle(
-                      color: Color(0xff5A636A),
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Color(0xff5A636A),
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -51,11 +52,10 @@ class Login extends StatelessWidget {
               padding: const EdgeInsets.only(left: 30.0),
               child: Text(
                 'Password',
-                style: GoogleFonts.ptSansCaption(
-                  textStyle: TextStyle(
-                      color: Color(0xff5A636A),
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Color(0xff5A636A),
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -71,6 +71,27 @@ class Login extends StatelessWidget {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      // Forgot password action
+                    },
+                    child: Text(
+                      'Forgot password',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Color(0xff0D1F23),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Center(
               child: Container(
                 width: 137,
@@ -81,15 +102,13 @@ class Login extends StatelessWidget {
                         borderRadius: BorderRadius.circular(24)),
                     backgroundColor: Color(0xff0D1F23),
                   ),
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                   child: Text(
                     'Log In',
-                    style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.white),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -102,16 +121,15 @@ class Login extends StatelessWidget {
                 children: [
                   Text('New user ?'),
                   TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUp()));
-                      },
-                      child: Text(
-                        'SignUp here',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SignUp()));
+                    },
+                    child: Text(
+                      'SignUp here',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ],
               ),
             )
