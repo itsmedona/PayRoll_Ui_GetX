@@ -1,141 +1,201 @@
 import 'package:flutter/material.dart';
-import '../signup/signup.dart';
+import 'package:payroll_ui_model_gtx/core/constants/size.dart';
+import '../../core/widgets/custom_button_styles.dart';
+import '../../core/widgets/custom_elevated_button.dart';
+import '../../core/widgets/custom_text_form_field.dart';
+import '../../core/widgets/custom_text_styles.dart';
+import '../../themes/apptheme.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key});
+// ignore: must_be_immutable
+class LoginScreen extends StatelessWidget {
+  LoginScreen({Key? key}) : super(key: key);
+
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    var unameControl = TextEditingController();
-    var passControl = TextEditingController();
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Text(
-                'Login',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.start,
-              ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: theme.colorScheme.onPrimary,
+        resizeToAvoidBottomInset: false,
+        body: SizedBox(
+          width: SizeConstants.width,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30.0),
-              child: Text(
-                'Username',
-                style: TextStyle(
-                  color: Color(0xff5A636A),
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 25, right: 25, top: 10, bottom: 10),
-              child: TextFormField(
-                controller: unameControl,
-                decoration: InputDecoration(
-                  fillColor: const Color(0xffE7E4F4),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30.0),
-              child: Text(
-                'Password',
-                style: TextStyle(
-                  color: Color(0xff5A636A),
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 25, right: 25, top: 10, bottom: 10),
-              child: TextFormField(
-                controller: passControl,
-                decoration: InputDecoration(
-                  fillColor: const Color(0xffE7E4F4),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      // Forgot password action
-                    },
-                    child: Text(
-                      'Forgot password',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                        color: Color(0xff0D1F23),
+            child: SizedBox(
+              height: SizeConstants.height,
+              child: Form(
+                key: formKey,
+                child: SizedBox(
+                  height: 768.v,
+                  width: 402.h,
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 28.h,
+                            vertical: 62.v,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: 2.h),
+                                child: Text(
+                                  "Hello!",
+                                  style: CustomTextStyles.displayMediumBlack,
+                                ),
+                              ),
+                              SizedBox(height: 13.v),
+                              Padding(
+                                padding: EdgeInsets.only(left: 2.h),
+                                child: Text(
+                                  "Welcome Back :)",
+                                  style: CustomTextStyles.titleMediumBold,
+                                ),
+                              ),
+                              SizedBox(height: 2.v),
+                              Padding(
+                                padding: EdgeInsets.only(left: 2.h),
+                                child: Text(
+                                  "Please login to your account.",
+                                  style: CustomTextStyles.labelLargeGray600,
+                                ),
+                              ),
+                              SizedBox(height: 46.v),
+                              buildInputFieldUsername(context),
+                              SizedBox(height: 22.v),
+                              buildInputFieldPassword(context),
+                              SizedBox(height: 16.v),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  "Forgot Password?",
+                                  style: CustomTextStyles
+                                      .titleMediumTealA700SemiBold
+                                      .copyWith(
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 30.v),
+                              CustomElevatedButton(
+                                text: "Login",
+                                buttonStyle: CustomButtonStyles.fillTealA,
+                              ),
+                              Spacer(),
+                              SizedBox(height: 67.v),
+                              Align(
+                                alignment: Alignment.center,
+                                child: RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: "Don't have an account? ",
+                                        style: CustomTextStyles
+                                            .bodyMediumBluegray500_1
+                                            .copyWith(
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "SignUp",
+                                        style: CustomTextStyles
+                                            .labelLargeBluegray500Bold
+                                            .copyWith(
+                                          decoration: TextDecoration.underline,
+                                     ))   ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Center(
-              child: Container(
-                width: 137,
-                height: 51,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24)),
-                    backgroundColor: Color(0xff0D1F23),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    'Log In',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
+                    ],
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('New user ?'),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignUp()));
-                    },
-                    child: Text(
-                      'SignUp here',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+                    ],
+          ),
+        ),),
       ),
-    );
+          ),),),
+);
   }
 }
+
+//Section Widget
+Widget buildInputFieldUsername(BuildContext context) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "Username",
+        style: CustomTextStyles.bodyMediumGray50001,
+      ),
+      SizedBox(height: 6.v),
+      CustomTextFormField(
+        controller: userNameController,
+        hintText: "Username",
+        hintStyle: CustomTextStyles.bodyLargeTealA700,
+        prefix: Container(
+          margin: EdgeInsets.fromLTRB(17.h, 13.v, 18.h, 13.v),
+          child: Icon(Icons.person),
+          height: 21.v,
+          width: 18.h,
+        ),
+        prefixConstraints: BoxConstraints(maxHeight: 48.v),
+        contentPadding: EdgeInsets.only(
+          top: 14.v,
+          right: 30.h,
+          bottom: 14.v,
+        ),
+        borderDecoration: TextFormFieldStyleHelper.outLineTealA,
+        filled: false,
+      ),
+    ],
+  );
+}
+
+Widget buildInputFieldPassword(BuildContext context) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        "Password",
+        style: CustomTextStyles.bodyMediumGray50001,
+      ),
+      SizedBox(height: 6.v),
+      CustomTextFormField(
+        controller: passwordController,
+        hintText: "* * * * * * * * * *",
+        hintStyle: CustomTextStyles.bodyLargeTealA700,
+        textInputAction: TextInputAction.done,
+        textInputType: TextInputType.visiblePassword,
+        prefix: Container(
+          margin: EdgeInsets.fromLTRB(17.h, 15.v, 17.h, 14.v),
+          child: Icon(Icons.shield_sharp),
+          height: 21.v,
+          width: 18.h,
+        ),
+        prefixConstraints: BoxConstraints(maxHeight: 48.v),
+        suffix: Container(
+          margin: EdgeInsets.fromLTRB(30.h, 14.v, 15.h, 14.v),
+          child: Icon(Icons.enhanced_encryption_rounded),
+          height: 20.adaptSize,
+          width: 20.adaptSize,
+        ),
+        suffixConstraints: BoxConstraints(maxHeight: 48.v),
+        obscureText: true,
+        contentPadding: EdgeInsets.symmetric(vertical: 14.v),
+        borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
+      ),
+    ],
+  );
+}
+

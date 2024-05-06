@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payroll_ui_model_gtx/screens/login/login.dart';
+import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
 
 void main() {
   runApp(const PayrollApp());
@@ -11,8 +12,9 @@ class PayrollApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: theme,
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: LoginScreen(),
     );
   }
 }
