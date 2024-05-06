@@ -140,7 +140,7 @@ Widget buildInputFieldUsername(BuildContext context) {
       ),
       SizedBox(height: 6.v),
       CustomTextFormField(
-        controller: userNameController,
+        controller: userNameController,////////
         hintText: "Username",
         hintStyle: CustomTextStyles.bodyLargeTealA700,
         prefix: Container(
@@ -155,7 +155,7 @@ Widget buildInputFieldUsername(BuildContext context) {
           right: 30.h,
           bottom: 14.v,
         ),
-        borderDecoration: TextFormFieldStyleHelper.outLineTealA,
+        borderDecoration: TextFormFieldStyleHelper.outlineTealA,
         filled: false,
       ),
     ],
@@ -172,7 +172,7 @@ Widget buildInputFieldPassword(BuildContext context) {
       ),
       SizedBox(height: 6.v),
       CustomTextFormField(
-        controller: passwordController,
+        controller: passwordController,///////
         hintText: "* * * * * * * * * *",
         hintStyle: CustomTextStyles.bodyLargeTealA700,
         textInputAction: TextInputAction.done,

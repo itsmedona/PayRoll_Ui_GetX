@@ -6,7 +6,7 @@ import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
 extension TextFormFieldStyleHelper on CustomTextFormField {
   static OutlineInputBorder get outlineTealATL6 => OutlineInputBorder(
       borderRadius: BorderRadius.circular(6.h),
-      borderSide: BorderSide(color: appTheme.tealA700, width: 1)
+      borderSide: BorderSide(color: AppTheme.tealA700, width: 1)
       );
 }
 
@@ -107,7 +107,7 @@ class CustomTextFormField extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(5.h),
               borderSide: BorderSide(
-                color: appTheme.gray300,
+                color: AppTheme.gray300,
                 width: 1,
               ),
             ),
@@ -115,7 +115,7 @@ class CustomTextFormField extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(5.h),
               borderSide: BorderSide(
-                color: appTheme.gray300,
+                color: AppTheme.gray300,
                 width: 1,
               ),
             ),
