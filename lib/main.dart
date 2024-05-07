@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/screens/login/login.dart';
+import 'package:payroll_ui_model_gtx/screens/login/login_screen.dart';
 import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
 
 void main() {

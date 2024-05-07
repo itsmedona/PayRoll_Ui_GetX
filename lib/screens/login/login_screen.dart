@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
+import 'package:payroll_ui_model_gtx/screens/login/controller/login_controller.dart';
 import '../../core/widgets/custom_button_styles.dart';
 import '../../core/widgets/custom_elevated_button.dart';
 import '../../core/widgets/custom_text_form_field.dart';
@@ -7,11 +9,9 @@ import '../../core/widgets/custom_text_styles.dart';
 import '../../themes/apptheme.dart';
 
 // ignore: must_be_immutable
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends GetWidget<LoginController> {
   LoginScreen({Key? key}) : super(key: key);
 
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -140,7 +140,7 @@ Widget buildInputFieldUsername(BuildContext context) {
       ),
       SizedBox(height: 6.v),
       CustomTextFormField(
-        controller: userNameController,////////
+        controller: controller.userNameController,
         hintText: "Username",
         hintStyle: CustomTextStyles.bodyLargeTealA700,
         prefix: Container(
@@ -171,29 +171,31 @@ Widget buildInputFieldPassword(BuildContext context) {
         style: CustomTextStyles.bodyMediumGray50001,
       ),
       SizedBox(height: 6.v),
-      CustomTextFormField(
-        controller: passwordController,///////
-        hintText: "* * * * * * * * * *",
-        hintStyle: CustomTextStyles.bodyLargeTealA700,
-        textInputAction: TextInputAction.done,
-        textInputType: TextInputType.visiblePassword,
-        prefix: Container(
-          margin: EdgeInsets.fromLTRB(17.h, 15.v, 17.h, 14.v),
-          child: Icon(Icons.shield_sharp),
-          height: 21.v,
-          width: 18.h,
+      Obx( 
+        ()=> CustomTextFormField(
+          controller: controller.passwordController,///////
+          hintText: "* * * * * * * * * *",
+          hintStyle: CustomTextStyles.bodyLargeTealA700,
+          textInputAction: TextInputAction.done,
+          textInputType: TextInputType.visiblePassword,
+          prefix: Container(
+            margin: EdgeInsets.fromLTRB(17.h, 15.v, 17.h, 14.v),
+            child: Icon(Icons.shield_sharp),
+            height: 21.v,
+            width: 18.h,
+          ),
+          prefixConstraints: BoxConstraints(maxHeight: 48.v),
+          suffix: Container(
+            margin: EdgeInsets.fromLTRB(30.h, 14.v, 15.h, 14.v),
+            child: Icon(Icons.enhanced_encryption_rounded),
+            height: 20.adaptSize,
+            width: 20.adaptSize,
+          ),
+          suffixConstraints: BoxConstraints(maxHeight: 48.v),
+          obscureText: true,
+          contentPadding: EdgeInsets.symmetric(vertical: 14.v),
+          borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
         ),
-        prefixConstraints: BoxConstraints(maxHeight: 48.v),
-        suffix: Container(
-          margin: EdgeInsets.fromLTRB(30.h, 14.v, 15.h, 14.v),
-          child: Icon(Icons.enhanced_encryption_rounded),
-          height: 20.adaptSize,
-          width: 20.adaptSize,
-        ),
-        suffixConstraints: BoxConstraints(maxHeight: 48.v),
-        obscureText: true,
-        contentPadding: EdgeInsets.symmetric(vertical: 14.v),
-        borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
       ),
     ],
   );
