@@ -12,8 +12,8 @@ class CustomPinCodeTextField extends StatelessWidget {
     required this.context,
     this.controller,
     this.textStyle,
-    this.hintText,
-    required this.onChanged,
+    //this.hintText,
+    //required this.onChanged,
     this.validator,
   }) : super(key: key);
 
@@ -33,12 +33,11 @@ class CustomPinCodeTextField extends StatelessWidget {
   }
 
   Widget get pinCodeTextFieldWidget => PinCodeTextField(
-        appcontext: context,///error occured
+        appContext: context,///error occured
         controller: controller,
         length: 4,
         keyboardType: TextInputType.number,
         textStyle: textStyle ?? CustomTextStyles.bodyMediumBluegray500,
-        hintStyle: hintStyle ?? CustomTextStyles.bodyMediumBluegray500,///says that undefined
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         enableActiveFill: true,
         pinTheme: PinTheme(
