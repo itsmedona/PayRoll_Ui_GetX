@@ -3,8 +3,8 @@ import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
 
-class CustmDropDown extends StatelessWidget {
-  const CustmDropDown({
+class CustomDropDown extends StatelessWidget {
+  const CustomDropDown({
     Key? key,
     this.alignment,
     required this.width,

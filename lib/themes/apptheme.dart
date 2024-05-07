@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 
-String appTheme = "lightCode";
 LightCodeColors get AppTheme => ThemeHelper().themeColor();
 
 ThemeData get theme => ThemeHelper().themeData();
 
+//Helper Class for managing themes and colors
 class ThemeHelper {
+  var apptheme = PrefUtils().getThemeData();
   Map<String, LightCodeColors> supportedCustomColor = {
     'lightCode': LightCodeColors()
   };
-
-  Map<String, ColorScheme> supportedColorScheme = {
+  Map<String, ColorScheme> supportedCustomColor = <String, ColorScheme>{
     'lightCode': ColorSchemes.lightCodeColorScheme
   };
 
   void changeTheme(String newTheme) {
-    appTheme = newTheme;
+    PrefUtils().setThemeData(newTheme);
+    Get.forceAppUpdate();
   }
 
   LightCodeColors getThemeColors() {
-    return supportedCustomColor[appTheme] ?? LightCodeColors();
+    return supportedCustomColor[apptheme] ?? LightCodeColors();
   }
 
   ThemeData getThemeData() {
     var ColorScheme =
-        supportedColorScheme[appTheme] ?? ColorSchemes.lightCodeColorScheme;
+        supportedColorScheme[apptheme] ?? ColorSchemes.lightCodeColorScheme;
     return ThemeData(
       visualDensity: VisualDensity.standard,
       colorScheme: ColorScheme,
@@ -166,7 +168,7 @@ class LightCodeColors {
 
 //blue
   Color get blue300 => Color(0XFF6DA8EC);
-  Color get blue30021 => Color(0X236EA8ED);
+  Color get blue30023 => Color(0X236EA8ED);
 
 //blueGray
   Color get blueGray100 => Color(0XFFD6D6D6);

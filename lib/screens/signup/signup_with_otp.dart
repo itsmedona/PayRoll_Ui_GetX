@@ -6,6 +6,7 @@ import 'package:payroll_ui_model_gtx/core/widgets/custom_text_form_field.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
 
+import '../../core/widgets/custom_drop_down.dart';
 import '../../core/widgets/custom_pincode.dart';
 
 // ignore: must_be_immutable
@@ -63,6 +64,8 @@ class SignupWithOtpScreen extends StatelessWidget {
 
 //Section Widget
 Widget buildRowlabel(BuildContext context) {
+ List<String> dropdownItemList = ["Item One", "Item Two", "Item Three"];
+
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -87,8 +90,10 @@ Widget buildRowlabel(BuildContext context) {
                 width: 24.adaptSize,
               ),
               hintText: "+91",
-              items: dropdownItemList,
-              contentPadding: EdgeInsets.fromLTRB(12.h, 14.v, 12.h, 12.v),
+             items: dropdownItemList,
+              contentPadding: EdgeInsets.fromLTRB(12.h, 14.v, 12.h, 12.v), 
+              autofocus: false, 
+              suffix: null,
             )
           ],
         ),
@@ -131,8 +136,7 @@ Widget buildColumnlabeltwo(BuildContext context) {
         ),
       ),
       SizedBox(height: 10.v),
-      CustomPinCodeTextField(context: context, onChanged: (value) {},
-      )
+      CustomPinCodeTextField(context: context),
     ],
   );
 }
