@@ -17,14 +17,13 @@ class CustomDropDown extends StatelessWidget {
     this.hindStyle,
     this.prefix,
     this.prefixConstraints,
-    required this.suffix,
     this.suffixConstraints,
     this.contentPadding,
     this.borderDecoration,
     this.fillColor,
     this.filled,
     this.validator,
-    this.onChanged,
+    this.onChanged, required this.suffix,
   }) : super(key: key);
 
   final Alignment? alignment;
@@ -58,8 +57,8 @@ class CustomDropDown extends StatelessWidget {
   }
 
   Widget get dropDownWidget => SizedBox(
-        width: width ?? double.maxFinite,/////
-        child: DropdownButtonFormField(/////
+        width: width,/////
+        child: DropdownButtonFormField(
           focusNode: focusNode,
           icon: icon,
           autofocus: autofocus,
@@ -73,10 +72,10 @@ class CustomDropDown extends StatelessWidget {
                     style: hindStyle ?? CustomTextStyles.bodyLargeBluegray500,
                   ),
                 );
-              })?.toList() ??/////
+              }).toList() ??
               [],
           decoration: decoration,
-          validator: validator,//////
+          validator: validator,
           onChanged: onChanged != null
               ? (value) {
                   onChanged!(value.toString());

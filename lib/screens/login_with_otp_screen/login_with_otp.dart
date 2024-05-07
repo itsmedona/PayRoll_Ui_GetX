@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_button_styles.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_drop_down.dart';
@@ -6,14 +7,13 @@ import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_pincode.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_form_field.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
+import 'package:payroll_ui_model_gtx/screens/login_with_otp_screen/controller/login_with_otp_controller.dart';
 import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
 
 // ignore: must_be_immutable
-class LoginWithOtpScreen extends StatelessWidget {
+class LoginWithOtpScreen extends GetWidget<LoginWithOtpController> {
   LoginWithOtpScreen({Key? key}) : super(key: key);
 
-  List<String> dropdownItemList = ["Item One", "Item Two", "Item Three"];
-  TextEditingController mobileNumberController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -83,10 +83,10 @@ class LoginWithOtpScreen extends StatelessWidget {
                 width: 77.h,
                 icon: Icon(Icons.arrow_downward),
                 hintText: "+91",
-                items: dropdownItemList,
+                items: controller.loginwithOtpModelObj.value.dropdownItemList.value,
                 contentPadding: EdgeInsets.fromLTRB(12.h, 14.v, 12.h, 12.v),
                 autofocus: false, suffix: null,
-              
+                //suffix: null,
               ),
             ],
           ),
@@ -103,7 +103,7 @@ class LoginWithOtpScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 6.v),
                 CustomTextFormField(
-                  controller: mobileNumberController,
+                  controller: controller.mobileNumberController,
                   hintText: "9876543210",
                   hintStyle: CustomTextStyles.bodyLargeBluegray500,
                   textInputType: TextInputType.phone,
@@ -129,9 +129,13 @@ class LoginWithOtpScreen extends StatelessWidget {
           ),
         ),
         SizedBox(height: 10.v),
-        CustomPinCodeTextField(
-          context: context,
-          onChanged: (value) {},
+        Obx(
+          () => CustomPinCodeTextField(
+              context: Get.context!,
+              controller:
+                 controller.otpController.value,
+              onChanged: (value) {},
+              ),
         ),
       ],
     );

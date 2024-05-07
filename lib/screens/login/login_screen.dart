@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 import 'package:payroll_ui_model_gtx/screens/login/controller/login_controller.dart';
 import '../../core/widgets/custom_button_styles.dart';
@@ -140,7 +140,7 @@ Widget buildInputFieldUsername(BuildContext context) {
       ),
       SizedBox(height: 6.v),
       CustomTextFormField(
-        controller: controller.userNameController,
+        controller: Get.find<LoginController>().userNameController,
         hintText: "Username",
         hintStyle: CustomTextStyles.bodyLargeTealA700,
         prefix: Container(
@@ -155,7 +155,7 @@ Widget buildInputFieldUsername(BuildContext context) {
           right: 30.h,
           bottom: 14.v,
         ),
-        borderDecoration: TextFormFieldStyleHelper.outlineTealA,
+        borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
         filled: false,
       ),
     ],
@@ -173,7 +173,7 @@ Widget buildInputFieldPassword(BuildContext context) {
       SizedBox(height: 6.v),
       Obx( 
         ()=> CustomTextFormField(
-          controller: controller.passwordController,///////
+          controller: Get.find<LoginController>().passwordController,///////
           hintText: "* * * * * * * * * *",
           hintStyle: CustomTextStyles.bodyLargeTealA700,
           textInputAction: TextInputAction.done,

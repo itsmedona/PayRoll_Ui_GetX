@@ -38,12 +38,10 @@ class CustomTextStyles {
         color: AppTheme.black900.withOpacity(.46),
         fontSize: 14.fSize,
       );
-
   static get bodyMediumBlack900Light => theme.textTheme.bodyMedium!.copyWith(
         color: AppTheme.black900,
         fontWeight: FontWeight.w300,
       );
-
   static get bodyMediumBluegray500 => theme.textTheme.bodyMedium!.copyWith(
         color: AppTheme.blueGray500,
         fontSize: 14.fSize,
@@ -61,14 +59,22 @@ class CustomTextStyles {
   static get bodyMediumGray600 => theme.textTheme.bodyMedium!.copyWith(
         color: AppTheme.gray600,
       );
-  static get bodyMediumOnPrimary => theme.textTheme.bodyMedium!
-      .copyWith(color: theme.colorScheme.onPrimary, fontSize: 15.fSize);
-  static get bodyMediumOnPrimary15 => theme.textTheme.bodyMedium!
-      .copyWith(color: theme.colorScheme.onPrimary, fontSize: 15.fSize);
-  static get bodyMediumPoppinsBlack900 => theme.textTheme.bodyMedium!.poppins
-      .copyWith(color: AppTheme.black900, fontSize: 15.fSize);
-  static get bodyMediumPoppinsBluegray300 => theme.textTheme.bodyMedium!.poppins
-      .copyWith(color: AppTheme.blueGray300, fontSize: 14.fSize);
+  static get bodyMediumOnPrimary => theme.textTheme.bodyMedium!.copyWith(
+    color: theme.colorScheme.onPrimary, 
+    fontSize: 15.fSize
+      );
+  static get bodyMediumOnPrimary15 => theme.textTheme.bodyMedium!.copyWith(
+    color: theme.colorScheme.onPrimary, 
+    fontSize: 15.fSize
+    );
+  static get bodyMediumPoppinsBlack900 => theme.textTheme.bodyMedium!.poppins.copyWith(
+    color: AppTheme.black900, 
+    fontSize: 15.fSize
+    );
+  static get bodyMediumPoppinsBluegray300 => theme.textTheme.bodyMedium!.poppins.copyWith(
+    color: AppTheme.blueGray300,
+     fontSize: 14.fSize
+     );
   static get bodyMediumPoppinsPrimary =>
       theme.textTheme.bodyMedium!.poppins.copyWith(
           color: theme.colorScheme.primary.withOpacity(.75),

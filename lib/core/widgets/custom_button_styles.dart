@@ -40,7 +40,7 @@ class CustomButtonStyles {
         ),
       );
       static ButtonStyle get outlineLightGreen => OutlinedButton.styleFrom(
-        backgroundColor: theme.colorScheme.lightgreen400.withOpacity(0.24),
+        backgroundColor:AppTheme.lightgreen400.withOpacity(0.24),
         side: BorderSide(
           color: AppTheme.lightgreen400.withOpacity(0.72),
           width: 1,

@@ -6,6 +6,13 @@ LightCodeColors get AppTheme => ThemeHelper().themeColor();
 
 ThemeData get theme => ThemeHelper().themeData();
 
+class PrefUtils {
+  void setThemeData(String themeData) {
+//
+  }
+}
+
+
 //Helper Class for managing themes and colors
 class ThemeHelper {
   var apptheme = PrefUtils().getThemeData();

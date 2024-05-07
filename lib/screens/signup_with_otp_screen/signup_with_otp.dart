@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_button_styles.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_form_field.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
+import 'package:payroll_ui_model_gtx/screens/signup_with_otp_screen/controller/signup_with_otp_controller.dart';
 import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
-
 import '../../core/widgets/custom_drop_down.dart';
 import '../../core/widgets/custom_pincode.dart';
 
@@ -46,7 +47,7 @@ class SignupWithOtpScreen extends StatelessWidget {
                         buttonStyle: CustomButtonStyles.fillTealA,
                       ),
                       Spacer(),
-                      buidColumnlabeltwo(context),
+                      buildColumnlabeltwo(context),
                       SizedBox(height: 47.v),
                       CustomElevatedButton(
                           text: "Signup",
@@ -93,7 +94,7 @@ Widget buildRowlabel(BuildContext context) {
              items: dropdownItemList,
               contentPadding: EdgeInsets.fromLTRB(12.h, 14.v, 12.h, 12.v), 
               autofocus: false, 
-              suffix: null,
+              
             )
           ],
         ),
@@ -110,7 +111,7 @@ Widget buildRowlabel(BuildContext context) {
             ),
             SizedBox(height: 6.v),
             CustomTextFormField(
-              controller: mobileNumberController,//////
+              controller: Get.find<SignupWithOtpController>().mobileNumberController,//////
               hintText: "9899996666",
               hintStyle: CustomTextStyles.bodyLargeBluegray500,
               textInputType: TextInputType.phone,
@@ -136,7 +137,7 @@ Widget buildColumnlabeltwo(BuildContext context) {
         ),
       ),
       SizedBox(height: 10.v),
-      CustomPinCodeTextField(context: context),
+      CustomPinCodeTextField(context: context, onChanged: null,),
     ],
   );
 }

@@ -5,6 +5,8 @@ import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+
+
 class CustomPinCodeTextField extends StatelessWidget {
   CustomPinCodeTextField({
     Key? key,
@@ -13,7 +15,6 @@ class CustomPinCodeTextField extends StatelessWidget {
     this.controller,
     this.textStyle,
     //this.hintText,
-    //required this.onChanged,
     this.validator,
   }) : super(key: key);
 
@@ -33,7 +34,7 @@ class CustomPinCodeTextField extends StatelessWidget {
   }
 
   Widget get pinCodeTextFieldWidget => PinCodeTextField(
-        appContext: context,///error occured
+        appContext: context,
         controller: controller,
         length: 4,
         keyboardType: TextInputType.number,
@@ -52,7 +53,6 @@ class CustomPinCodeTextField extends StatelessWidget {
           inactiveFillColor: theme.colorScheme.onPrimary,
           activeFillColor: theme.colorScheme.onPrimary,
         ),
-        onChanged: (value) => onChanged(value),//says that onChanged isn't defined
         validator: validator,
        
       );

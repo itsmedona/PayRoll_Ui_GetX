@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_button_styles.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_form_field.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
+import 'package:payroll_ui_model_gtx/screens/signup/controller/signup_details_controller.dart';
 import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
 
 // ignore: must_be_immutable
@@ -87,7 +90,7 @@ Widget buildFullNameSection(BuildContext context) {
         ),
         SizedBox(height: 6.v),
         CustomTextFormField(
-          controller: fullNameController,///////
+          controller: Get.find<SignupDetailsController>().fullNameController,
           hintText: "name",
           hintStyle: CustomTextStyles.bodyLargeTealA700,
           borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
@@ -109,7 +112,7 @@ Widget buildUserNameSection(BuildContext context) {
         ),
         SizedBox(height: 6.v),
         CustomTextFormField(
-          controller: userNameController,//////
+          controller:Get.find<SignupDetailsController>(). userNameController,
           hintText: "username",
           hintStyle: CustomTextStyles.bodyLargeTealA700,
           borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
@@ -131,7 +134,7 @@ Widget buildPhoneNumberSection(BuildContext context) {
         ),
         SizedBox(height: 6.v),
         CustomTextFormField(
-          controller: phoneNumberController,//////
+          controller: Get.find<SignupDetailsController>().phoneNumberController,
           hintText: "+91 9499996666",
           hintStyle: CustomTextStyles.bodyLargeTealA700,
           borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
@@ -154,7 +157,7 @@ Widget buildPasswordSection(BuildContext context) {
         ),
         SizedBox(height: 6.v),
         CustomTextFormField(
-          controller: passwordController,///////
+          controller: Get.find<SignupDetailsController>().passwordController,
           hintText: "* * * * * * * * * *",
           hintStyle: CustomTextStyles.bodyLargeTealA700,
           textInputType: TextInputType.visiblePassword,
@@ -190,7 +193,7 @@ Widget buildConfirmPasswordSection(BuildContext context) {
         ),
         SizedBox(height: 6.v),
         CustomTextFormField(
-          controller: confirmpasswordController,///////
+          controller: Get.find<SignupDetailsController>().confirmpasswordController,
           hintText: "* * * * * * * * * *",
           hintStyle: CustomTextStyles.bodyLargeTealA700,
           textInputAction: TextInputAction.done,
