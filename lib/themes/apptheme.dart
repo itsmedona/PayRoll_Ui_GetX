@@ -2,20 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 
+import '../utils/pref_utils.dart';
+
 LightCodeColors get AppTheme => ThemeHelper().themeColor();
 
 ThemeData get theme => ThemeHelper().themeData();
 
-class PrefUtils {
-  static void setThemeData(String theme) {}
-
-static String getThemeData(){
-  return 'lightCode';
-}
-}
 //Helper Class for managing themes and colors
 class ThemeHelper {
-  var apptheme = PrefUtils().getThemeData();////error 
+  var apptheme = PrefUtils().getThemeData();
+  //map for custom color themes 
   Map<String, LightCodeColors> supportedCustomColor = {
     'lightCode': LightCodeColors()
   };

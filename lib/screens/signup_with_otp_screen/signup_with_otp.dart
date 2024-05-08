@@ -93,7 +93,7 @@ Widget buildRowlabel(BuildContext context) {
               hintText: "+91",
              items: dropdownItemList,
               contentPadding: EdgeInsets.fromLTRB(12.h, 14.v, 12.h, 12.v), 
-              autofocus: false, 
+              autofocus: false, suffix: null, 
               
             )
           ],
@@ -111,7 +111,7 @@ Widget buildRowlabel(BuildContext context) {
             ),
             SizedBox(height: 6.v),
             CustomTextFormField(
-              controller: Get.find<SignupWithOtpController>().mobileNumberController,//////
+              controller: Get.find<SignupWithOtpController>().mobileNumberController,
               hintText: "9899996666",
               hintStyle: CustomTextStyles.bodyLargeBluegray500,
               textInputType: TextInputType.phone,
@@ -137,7 +137,7 @@ Widget buildColumnlabeltwo(BuildContext context) {
         ),
       ),
       SizedBox(height: 10.v),
-      CustomPinCodeTextField(context: context, onChanged: null,),
+     CustomPinCodeTextField(context: context, onChanged: null,),
     ],
   );
 }

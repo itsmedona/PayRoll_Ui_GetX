@@ -15,7 +15,7 @@ class CustomPinCodeTextField extends StatelessWidget {
     this.controller,
     this.textStyle,
     //this.hintText,
-    this.validator,
+    this.validator, required Null Function(dynamic value) onChanged,
   }) : super(key: key);
 
   final Alignment? alignment;
