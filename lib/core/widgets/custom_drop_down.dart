@@ -4,7 +4,12 @@ import 'package:payroll_ui_model_gtx/core/data/models/selectionPopupModel/select
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
 
-extension DropDownStyleHelper on CustomDropDown {}
+extension DropDownStyleHelper on CustomDropDown {
+  static OutlineInputBorder get outlineBlueGrayTL6 => OutlineInputBorder(
+        borderRadius: BorderRadius.circular(6.h),
+        borderSide: BorderSide(color: AppTheme.blueGray500, width: 1),
+      );
+}
 
 class CustomDropDown extends StatelessWidget {
   CustomDropDown({
@@ -18,7 +23,7 @@ class CustomDropDown extends StatelessWidget {
     this.items,
     this.hintText,
     this.hintStyle,
-    this.prefix, 
+    this.prefix,
     this.prefixConstraints,
     this.suffix,
     this.suffixConstraints,
@@ -27,7 +32,7 @@ class CustomDropDown extends StatelessWidget {
     this.fillColor,
     this.filled,
     this.validator,
-    this.onChanged, 
+    this.onChanged,
   }) : super(key: key);
   final Alignment? alignment;
   final double? width;
@@ -75,46 +80,41 @@ class CustomDropDown extends StatelessWidget {
           }).toList(),
           decoration: decoration,
           validator: validator,
-          onChanged: ((value) {
-            return onChanged!(value!);
-          },
-        ),),
+          onChanged: ( //having some issues
+            (value) {
+              return onChanged!(value!);
+            },
+          ),
+        ),
       );
-      InputDecoration get decoration=>InputDecoration(
-        hintText: hintText??"",
-        hintStyle: hintStyle??CustomTextStyles.bodyLargeBluegray500,
+  InputDecoration get decoration => InputDecoration(
+        hintText: hintText ?? "",
+        hintStyle: hintStyle ?? CustomTextStyles.bodyLargeBluegray500,
         prefixIcon: prefix,
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix,
         suffixIconConstraints: suffixConstraints,
         isDense: true,
-        contentPadding: contentPadding??EdgeInsets.fromLTRB(8.h, 10.v, 8.h,8.v),
-        fillColor: fillColor??theme.colorScheme.onPrimary,
+        contentPadding:
+            contentPadding ?? EdgeInsets.fromLTRB(8.h, 10.v, 8.h, 8.v),
+        fillColor: fillColor ?? theme.colorScheme.onPrimary,
         filled: filled,
-        border: borderDecoration??
-        OutlineInputBorder(
-          borderRadius: BorderRadius.circular(19.h),
-          borderSide: BorderSide(
-            color: AppTheme.blueGray500,
-            width: 1
-          )
-        ),
-        enabledBorder: borderDecoration??OutlineInputBorder(
-          borderRadius: BorderRadius.circular(19.h),
-          borderSide: BorderSide(
-            color: AppTheme.blueGray500,
-            width: 1
-          ),
-        ),
-        focusedBorder: borderDecoration??
-        OutlineInputBorder(
-          borderRadius: BorderRadius.circular(6.h),
-          borderSide: BorderSide(
-            color: AppTheme.tealA700,
-            width: 1,
-          ),
-        ),
-
-
+        border: borderDecoration ??
+            OutlineInputBorder(
+                borderRadius: BorderRadius.circular(19.h),
+                borderSide: BorderSide(color: AppTheme.blueGray500, width: 1)),
+        enabledBorder: borderDecoration ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(19.h),
+              borderSide: BorderSide(color: AppTheme.blueGray500, width: 1),
+            ),
+        focusedBorder: borderDecoration ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6.h),
+              borderSide: BorderSide(
+                color: AppTheme.tealA700,
+                width: 1,
+              ),
+            ),
       );
 }
