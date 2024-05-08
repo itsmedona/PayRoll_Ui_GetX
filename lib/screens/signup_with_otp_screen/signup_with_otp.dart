@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
@@ -13,9 +15,10 @@ import '../../core/widgets/custom_pincode.dart';
 // ignore: must_be_immutable
 class SignupWithOtpScreen extends StatelessWidget {
   SignupWithOtpScreen({Key? key}) : super(key: key);
-
   List<String> dropdownItemList = ["Item One", "Item Two", "Item Three"];
+
   TextEditingController mobileNumberController = TextEditingController();
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
@@ -47,7 +50,7 @@ class SignupWithOtpScreen extends StatelessWidget {
                         buttonStyle: CustomButtonStyles.fillTealA,
                       ),
                       Spacer(),
-                      buildColumnlabeltwo(context),
+                      buildColumnlabeltwo(),
                       SizedBox(height: 47.v),
                       CustomElevatedButton(
                           text: "Signup",
@@ -65,8 +68,6 @@ class SignupWithOtpScreen extends StatelessWidget {
 
 //Section Widget
 Widget buildRowlabel(BuildContext context) {
- List<String> dropdownItemList = ["Item One", "Item Two", "Item Three"];
-
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -80,7 +81,7 @@ Widget buildRowlabel(BuildContext context) {
               style: CustomTextStyles.bodyMediumBluegray500,
             ),
             SizedBox(height: 6.v),
-            CustomDropDown(
+               CustomDropDown(
               width: 77.h,
               icon: Container(
                 margin: EdgeInsets.symmetric(horizontal: 12.h),
@@ -91,11 +92,11 @@ Widget buildRowlabel(BuildContext context) {
                 width: 24.adaptSize,
               ),
               hintText: "+91",
-             items: dropdownItemList,
-              contentPadding: EdgeInsets.fromLTRB(12.h, 14.v, 12.h, 12.v), 
-              autofocus: false, suffix: null, 
-              
-            )
+              items:controller.SignupWithOtpModelObj.value.dropdownItemList!.value,///error occured
+              contentPadding: EdgeInsets.fromLTRB(12.h, 14.v, 12.h, 12.v),
+              autofocus: false,
+              suffix: null,
+            ),
           ],
         ),
       ),
@@ -111,7 +112,8 @@ Widget buildRowlabel(BuildContext context) {
             ),
             SizedBox(height: 6.v),
             CustomTextFormField(
-              controller: Get.find<SignupWithOtpController>().mobileNumberController,
+              controller:
+                  Get.find<SignupWithOtpController>().mobileNumberController,
               hintText: "9899996666",
               hintStyle: CustomTextStyles.bodyLargeBluegray500,
               textInputType: TextInputType.phone,
@@ -125,7 +127,7 @@ Widget buildRowlabel(BuildContext context) {
 }
 
 ///
-Widget buildColumnlabeltwo(BuildContext context) {
+Widget buildColumnlabeltwo() {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -137,7 +139,13 @@ Widget buildColumnlabeltwo(BuildContext context) {
         ),
       ),
       SizedBox(height: 10.v),
-     CustomPinCodeTextField(context: context, onChanged: null,),
+      Obx(
+        () => CustomPinCodeTextField(
+          context: Get.context!,
+          controller: Get.find<SignupWithOtpController>().otpController,
+          onChanged: (value) {},
+        ),
+      ),
     ],
   );
 }

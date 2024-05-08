@@ -80,11 +80,9 @@ class CustomDropDown extends StatelessWidget {
           }).toList(),
           decoration: decoration,
           validator: validator,
-          onChanged: ( //having some issues
-            (value) {
-              return onChanged!(value!);
-            },
-          ),
+          onChanged: (value) {
+            return onChanged!(value!);
+          },
         ),
       );
   InputDecoration get decoration => InputDecoration(

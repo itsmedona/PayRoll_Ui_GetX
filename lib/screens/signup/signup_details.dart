@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_button_styles.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
