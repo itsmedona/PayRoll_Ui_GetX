@@ -7,24 +7,24 @@ LightCodeColors get AppTheme => ThemeHelper().themeColor();
 ThemeData get theme => ThemeHelper().themeData();
 
 class PrefUtils {
-  void setThemeData(String themeData) {
-//
-  }
+  static void setThemeData(String theme) {}
+
+static String getThemeData(){
+  return 'lightCode';
 }
-
-
+}
 //Helper Class for managing themes and colors
 class ThemeHelper {
-  var apptheme = PrefUtils().getThemeData();
+  var apptheme = PrefUtils().getThemeData();////error 
   Map<String, LightCodeColors> supportedCustomColor = {
     'lightCode': LightCodeColors()
   };
-  Map<String, ColorScheme> supportedCustomColor = <String, ColorScheme>{
+  Map<String, ColorScheme> supportedColorScheme = <String, ColorScheme>{
     'lightCode': ColorSchemes.lightCodeColorScheme
   };
 
   void changeTheme(String newTheme) {
-    PrefUtils().setThemeData(newTheme);
+    PrefUtils().setThemeData(newTheme);/////error
     Get.forceAppUpdate();
   }
 
