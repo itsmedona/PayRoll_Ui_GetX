@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
@@ -17,24 +15,22 @@ class SignupWithOtpScreen extends StatelessWidget {
   SignupWithOtpScreen({Key? key}) : super(key: key);
   List<String> dropdownItemList = ["Item One", "Item Two", "Item Three"];
 
-  TextEditingController mobileNumberController = TextEditingController();
-
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      backgroundColor: theme.colorScheme.onPrimary,
-      resizeToAvoidBottomInset: false,
-      body: Center(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom,
-          ),
-          child: SizedBox(
-            height: SizeConstants.height,
-            child: Form(
+      child: Scaffold(
+        backgroundColor: theme.colorScheme.onPrimary,
+        resizeToAvoidBottomInset: false,
+        body: Center(
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: SizedBox(
+              height: SizeConstants.height,
+              child: Form(
                 key: formKey,
                 child: Container(
                   width: 402.h,
@@ -53,21 +49,29 @@ class SignupWithOtpScreen extends StatelessWidget {
                       buildColumnlabeltwo(),
                       SizedBox(height: 47.v),
                       CustomElevatedButton(
-                          text: "Signup",
-                          buttonStyle: CustomButtonStyles.fillTealA),
+                        text: "Signup",
+                        buttonStyle: CustomButtonStyles.fillTealA,
+                      ),
                       SizedBox(height: 40.v)
                     ],
                   ),
-                )),
+                ),
+              ),
+            ),
           ),
         ),
       ),
-    ));
+    );
   }
 }
 
 //Section Widget
 Widget buildRowlabel(BuildContext context) {
+  final SignupWithOtpController controller =
+      Get.find<SignupWithOtpController>();
+  final TextEditingController mobileNumberController =
+      controller.mobileNumberController.value as TextEditingController;
+
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -81,7 +85,7 @@ Widget buildRowlabel(BuildContext context) {
               style: CustomTextStyles.bodyMediumBluegray500,
             ),
             SizedBox(height: 6.v),
-               CustomDropDown(
+            CustomDropDown(
               width: 77.h,
               icon: Container(
                 margin: EdgeInsets.symmetric(horizontal: 12.h),
@@ -92,7 +96,8 @@ Widget buildRowlabel(BuildContext context) {
                 width: 24.adaptSize,
               ),
               hintText: "+91",
-              items:controller.SignupWithOtpModelObj.value.dropdownItemList!.value,///error occured
+              items:
+                  controller.signupWithOtpModelObj.value.dropdownItemList.value,
               contentPadding: EdgeInsets.fromLTRB(12.h, 14.v, 12.h, 12.v),
               autofocus: false,
               suffix: null,
@@ -101,33 +106,37 @@ Widget buildRowlabel(BuildContext context) {
         ),
       ),
       Expanded(
-          child: Padding(
-        padding: EdgeInsets.only(left: 9.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Mobile Number",
-              style: CustomTextStyles.bodyLargeBluegray500,
-            ),
-            SizedBox(height: 6.v),
-            CustomTextFormField(
-              controller:
-                  Get.find<SignupWithOtpController>().mobileNumberController,
-              hintText: "9899996666",
-              hintStyle: CustomTextStyles.bodyLargeBluegray500,
-              textInputType: TextInputType.phone,
-              borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
-            )
-          ],
+        child: Padding(
+          padding: EdgeInsets.only(left: 9.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Mobile Number",
+                style: CustomTextStyles.bodyLargeBluegray500,
+              ),
+              SizedBox(height: 6.v),
+              CustomTextFormField(
+                controller: mobileNumberController,
+                hintText: "9899996666",
+                hintStyle: CustomTextStyles.bodyLargeBluegray500,
+                textInputType: TextInputType.phone,
+                borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
+              )
+            ],
+          ),
         ),
-      ))
+      )
     ],
   );
 }
 
 ///
 Widget buildColumnlabeltwo() {
+  final SignupWithOtpController controller =
+      Get.find<SignupWithOtpController>();
+  final TextEditingController otpController = controller.otpController.value;
+
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -142,7 +151,7 @@ Widget buildColumnlabeltwo() {
       Obx(
         () => CustomPinCodeTextField(
           context: Get.context!,
-          controller: Get.find<SignupWithOtpController>().otpController,
+          controller: otpController,
           onChanged: (value) {},
         ),
       ),
