@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 import 'package:payroll_ui_model_gtx/core/data/models/selectionPopupModel/selection_popup_model.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
-import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
+import 'package:payroll_ui_model_gtx/themes/theme_helper.dart';
 
 extension DropDownStyleHelper on CustomDropDown {
   static OutlineInputBorder get outlineBlueGrayTL6 => OutlineInputBorder(

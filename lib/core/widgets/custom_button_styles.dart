@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
-import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
+import 'package:payroll_ui_model_gtx/themes/theme_helper.dart';
 
 class CustomButtonStyles {
   //elevated button style

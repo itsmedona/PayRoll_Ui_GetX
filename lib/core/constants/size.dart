@@ -55,8 +55,7 @@ Widget build(BuildContext context) {
   });
 }
 
- builder(BuildContext context, Orientation orientation, DeviceType deviceType) {
-}
+builder(BuildContext context, Orientation orientation, DeviceType deviceType) {}
 
 class SizeConstants {
   static late BoxConstraints boxConstraints;

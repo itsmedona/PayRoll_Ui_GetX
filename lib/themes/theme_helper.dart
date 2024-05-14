@@ -138,7 +138,8 @@ class TextThemes {
             color: AppTheme.lightgreenA700,
             fontSize: 20.fSize,
             fontFamily: 'Inter',
-            fontWeight: FontWeight.w700),
+            fontWeight: FontWeight.w700
+            ),
         titleMedium: TextStyle(
           color: AppTheme.black900,
           fontSize: 16.fSize,

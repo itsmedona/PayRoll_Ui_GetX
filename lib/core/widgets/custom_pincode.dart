@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:payroll_ui_model_gtx/core/constants/size.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
-import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
+import 'package:payroll_ui_model_gtx/themes/theme_helper.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 

@@ -6,7 +6,7 @@ import '../../core/widgets/custom_button_styles.dart';
 import '../../core/widgets/custom_elevated_button.dart';
 import '../../core/widgets/custom_text_form_field.dart';
 import '../../core/widgets/custom_text_styles.dart';
-import '../../themes/apptheme.dart';
+import '../../themes/theme_helper.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends GetWidget<LoginController> {

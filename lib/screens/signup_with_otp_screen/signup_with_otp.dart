@@ -6,7 +6,7 @@ import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_form_field.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import 'package:payroll_ui_model_gtx/screens/signup_with_otp_screen/controller/signup_with_otp_controller.dart';
-import 'package:payroll_ui_model_gtx/themes/apptheme.dart';
+import 'package:payroll_ui_model_gtx/themes/theme_helper.dart';
 import '../../core/widgets/custom_drop_down.dart';
 import '../../core/widgets/custom_pincode.dart';
 
