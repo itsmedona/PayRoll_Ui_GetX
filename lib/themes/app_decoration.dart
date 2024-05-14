@@ -203,17 +203,17 @@ class BorderRadiusStyle {
   //Rounded borders
   static BorderRadius get roundedBorder10 => BorderRadius.circular(
         10.h,
-      ); 
+      );
   static BorderRadius get roundedBorder15 => BorderRadius.circular(
         15.h,
-      );  
+      );
   static BorderRadius get roundedBorder24 => BorderRadius.circular(
         24.h,
-      );      
+      );
   static BorderRadius get roundedBorder27 => BorderRadius.circular(
         27.h,
-      );    
+      );
   static BorderRadius get roundedBorder5 => BorderRadius.circular(
         5.h,
-      );    
+      );
 }
