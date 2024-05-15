@@ -1,5 +1,6 @@
 // Used in the code as a reference to create UI responsively
-
+// ignore: unused_import
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 const num FIGMA_DESIGN_WIDTH = 390;
@@ -7,8 +8,8 @@ const num FIGMA_DESIGN_HEIGHT = 844;
 const num FIGMA_DESIGN_STATUS_BAR = 0;
 
 extension ResponsiveExtension on num {
-  double get _width => SizeConstants.width;
-  double get _height => SizeConstants.height;
+  double get _width => SizeUtils.width;
+  double get _height => SizeUtils.height;
   double get h => ((this * _width) / FIGMA_DESIGN_WIDTH);
   double get v =>
       (this * _height) / (FIGMA_DESIGN_HEIGHT - FIGMA_DESIGN_STATUS_BAR);
@@ -39,27 +40,26 @@ typedef ResponsiveBuild = Widget Function(
 class Sizer extends StatelessWidget {
   const Sizer({Key? key, required this.builder}) : super(key: key);
 
+//Builds  widget whenever orientation changes
   final ResponsiveBuild builder;
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return LayoutBuilder(builder: (context, constraints) {
+      return OrientationBuilder(builder: (context, orientation) {
+        SizeUtils.setScreenSize(constraints, orientation);
+        return builder(context, orientation, SizeUtils.deviceType);
+      });
+    });
   }
 }
 
-Widget build(BuildContext context) {
-  return LayoutBuilder(builder: (context, constraints) {
-    return OrientationBuilder(builder: (context, orientation) {
-      SizeConstants.setScreenSize(constraints, orientation);
-      return builder(context, orientation, SizeConstants.deviceType);
-    });
-  });
-}
-
-builder(BuildContext context, Orientation orientation, DeviceType deviceType) {}
-
-class SizeConstants {
+class SizeUtils {
+  //Device's Boxconstraints
   static late BoxConstraints boxConstraints;
+  //Device's orientation
   static late Orientation orientation;
+
   static late DeviceType deviceType;
   static late double height;
   static late double width;

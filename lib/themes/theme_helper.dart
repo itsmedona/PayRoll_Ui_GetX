@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/core/constants/size.dart';
+import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 
 import '../utils/pref_utils.dart';
 

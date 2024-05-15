@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/core/constants/size.dart';
+import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_button_styles.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_drop_down.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
@@ -28,7 +28,7 @@ class LoginWithOtpScreen extends GetWidget<LoginWithOtpController> {
               bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
             child: SizedBox(
-              height: SizeConstants.height,
+              height: SizeUtils.height,
               child: Form(
                 key: formKey,
                 child: Container(

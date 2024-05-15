@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/core/constants/size.dart';
+import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import 'package:payroll_ui_model_gtx/screens/login/controller/login_controller.dart';
 import '../../core/widgets/custom_button_styles.dart';
 import '../../core/widgets/custom_elevated_button.dart';
@@ -21,13 +21,13 @@ class LoginScreen extends GetWidget<LoginController> {
         backgroundColor: theme.colorScheme.onPrimary,
         resizeToAvoidBottomInset: false,
         body: SizedBox(
-          width: SizeConstants.width,
+          width: SizeUtils.width,
           child: SingleChildScrollView(
             padding: EdgeInsets.only(
               bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
             child: SizedBox(
-              height: SizeConstants.height,
+              height: SizeUtils.height,
               child: Form(
                 key: formKey,
                 child: SizedBox(

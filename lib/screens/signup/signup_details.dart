@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/core/constants/size.dart';
+import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_button_styles.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_form_field.dart';
@@ -25,7 +25,7 @@ class SignupDetailsScreen extends StatelessWidget {
         backgroundColor: theme.colorScheme.onPrimary,
         resizeToAvoidBottomInset: false,
         body: SizedBox(
-          width: SizeConstants.width,
+          width: SizeUtils.width,
           child: SingleChildScrollView(
             padding: EdgeInsets.only(
               bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -111,7 +111,7 @@ Widget buildUserNameSection(BuildContext context) {
         ),
         SizedBox(height: 6.v),
         CustomTextFormField(
-          controller:Get.find<SignupDetailsController>(). userNameController,
+          controller: Get.find<SignupDetailsController>().userNameController,
           hintText: "username",
           hintStyle: CustomTextStyles.bodyLargeTealA700,
           borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
@@ -192,7 +192,8 @@ Widget buildConfirmPasswordSection(BuildContext context) {
         ),
         SizedBox(height: 6.v),
         CustomTextFormField(
-          controller: Get.find<SignupDetailsController>().confirmpasswordController,
+          controller:
+              Get.find<SignupDetailsController>().confirmpasswordController,
           hintText: "* * * * * * * * * *",
           hintStyle: CustomTextStyles.bodyLargeTealA700,
           textInputAction: TextInputAction.done,
@@ -208,11 +209,11 @@ Widget buildConfirmPasswordSection(BuildContext context) {
           contentPadding: EdgeInsets.only(
             left: 12.h,
             top: 14.v,
-            bottom: 14.v,          
-            ),
-            borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
-          )
+            bottom: 14.v,
+          ),
+          borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
+        )
       ],
     ),
-    );
+  );
 }
