@@ -1,31 +1,28 @@
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PrefUtils {
-  PrefUtils() {
-    SharedPreferences.getInstance().then((value) {
-      sharedPreferences = value;
-    });
-  }
-  static SharedPreferences? sharedPreferences;
+  static SharedPreferences? _sharedPreferences;
 
-  Future<void> init() async {
-    sharedPreferences ??= await SharedPreferences.getInstance();
-    print('SharedPreference Initialized');
+//Ensure initialization is done in a static method
+  static Future<void> init() async {
+    _sharedPreferences ??= await SharedPreferences.getInstance();
+    print('SharedPreferences Initialized');
   }
 
-//will clear all the data  stored in preference
-  void clearPreferencesData() async {
-    sharedPreferences!.clear();
+//Method to clear preferences data
+  static void clearPreferencesData() {
+    _sharedPreferences?.clear();
   }
 
-  Future<void> setThemeData(String value) {
-    return sharedPreferences!.setString('themeData', value);
+//Method to set theme data
+  static Future<void> setThemeData(String value) async {
+    await _sharedPreferences?.setString('themeData', value);
   }
 
-  String getThemeData() {
+//Method to get theme data
+  static String getThemeData() {
     try {
-      return sharedPreferences!.getString('themeData')!;
+      return _sharedPreferences?.getString('themeData') ?? 'primary';
     } catch (e) {
       return 'primary';
     }

@@ -10,8 +10,8 @@ ThemeData get theme => ThemeHelper().themeData();
 
 //Helper Class for managing themes and colors
 class ThemeHelper {
-  var apptheme = PrefUtils().getThemeData();
-  //map for custom color themes 
+  var apptheme = PrefUtils.init();
+  //map for custom color themes
   Map<String, LightCodeColors> supportedCustomColor = {
     'lightCode': LightCodeColors()
   };
@@ -20,7 +20,7 @@ class ThemeHelper {
   };
 
   void changeTheme(String newTheme) {
-    PrefUtils().setThemeData(newTheme);/////error
+    PrefUtils.init(); /////error
     Get.forceAppUpdate();
   }
 
@@ -138,8 +138,7 @@ class TextThemes {
             color: AppTheme.lightgreenA700,
             fontSize: 20.fSize,
             fontFamily: 'Inter',
-            fontWeight: FontWeight.w700
-            ),
+            fontWeight: FontWeight.w700),
         titleMedium: TextStyle(
           color: AppTheme.black900,
           fontSize: 16.fSize,
