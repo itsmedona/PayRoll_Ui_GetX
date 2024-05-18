@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
-import 'package:payroll_ui_model_gtx/screens/login/controller/login_controller.dart';
 import '../../core/widgets/custom_button_styles.dart';
 import '../../core/widgets/custom_elevated_button.dart';
 import '../../core/widgets/custom_text_form_field.dart';
 import '../../core/widgets/custom_text_styles.dart';
 import '../../themes/theme_helper.dart';
+import '../../utils/size_utils.dart';
+import 'controller/login_controller.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends GetWidget<LoginController> {
