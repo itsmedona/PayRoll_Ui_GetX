@@ -9,27 +9,29 @@ ThemeData get theme => ThemeHelper().themeData();
 
 //Helper Class for managing themes and colors
 class ThemeHelper {
-  var apptheme = PrefUtils.init();
-  //map for custom color themes
-  Map<String, LightCodeColors> supportedCustomColor = {
+  //The current app theme
+  var _apptheme = PrefUtils.getThemeData();
+  //map for custom color themes supported by the app
+  Map<String, LightCodeColors> _supportedCustomColor = {
     'lightCode': LightCodeColors()
   };
-  Map<String, ColorScheme> supportedColorScheme = <String, ColorScheme>{
+ //map of color schemes supported by the app 
+  Map<String, ColorScheme> _supportedColorScheme = {
     'lightCode': ColorSchemes.lightCodeColorScheme
   };
-
-  void changeTheme(String newTheme) {
-    PrefUtils.init(); /////error
+//Changes the apptheme to _newTheme
+  void changeTheme(String _newTheme) {
+    PrefUtils.setThemeData(_newTheme);
     Get.forceAppUpdate();
   }
-
-  LightCodeColors getThemeColors() {
-    return supportedCustomColor[apptheme] ?? LightCodeColors();
+//return lightCode colors for the current theme.
+  LightCodeColors _getThemeColors() {
+    return _supportedCustomColor[_apptheme] ?? LightCodeColors();
   }
 
-  ThemeData getThemeData() {
+  ThemeData _getThemeData() {
     var ColorScheme =
-        supportedColorScheme[apptheme] ?? ColorSchemes.lightCodeColorScheme;
+        _supportedColorScheme[_apptheme] ?? ColorSchemes.lightCodeColorScheme;
     return ThemeData(
       visualDensity: VisualDensity.standard,
       colorScheme: ColorScheme,
@@ -75,10 +77,10 @@ class ThemeHelper {
       ),
     );
   }
-
-  LightCodeColors themeColor() => getThemeColors();
-
-  ThemeData themeData() => getThemeData();
+//Returns the lightCode colors for the current theme.
+  LightCodeColors themeColor() => _getThemeColors();
+//returns current theme data.
+  ThemeData themeData() => _getThemeData();
 }
 
 class TextThemes {
@@ -151,7 +153,7 @@ class TextThemes {
             fontWeight: FontWeight.w500),
       );
 }
-
+//Class containing supported color schemes
 class ColorSchemes {
   static final lightCodeColorScheme = ColorScheme.light(
     primary: Color(0XFF0B6158),
@@ -160,7 +162,7 @@ class ColorSchemes {
     onPrimaryContainer: Color(0X0FD90000),
   );
 }
-
+//Class containing custom colors for a lightCode theme
 class LightCodeColors {
   //amber
   Color get amber300 => Color(0XFFF6C956);
