@@ -1,6 +1,6 @@
-// Used in the code as a reference to create UI responsively
+// Used in the code as a reference to create UI responsive
 // ignore: unused_import
-import 'dart:ui' as ui;
+import 'dart:ui'as ui;
 import 'package:flutter/material.dart';
 
 const num FIGMA_DESIGN_WIDTH = 390;

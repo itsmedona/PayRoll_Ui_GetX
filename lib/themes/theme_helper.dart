@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
-
 import '../utils/pref_utils.dart';
 
 LightCodeColors get AppTheme => ThemeHelper().themeColor();

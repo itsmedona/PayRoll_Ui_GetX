@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/screens/login/login_screen.dart';
-import 'package:payroll_ui_model_gtx/themes/theme_helper.dart';
+import 'package:payroll_ui_model_gtx/utils/pref_utils.dart';
+import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
+import 'themes/theme_helper.dart';
 
-void main() {
-  runApp(PayrollApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PrefUtils.init(); // Initialize preferences
+  runApp(const PayrollApp());
 }
 
 class PayrollApp extends StatelessWidget {
@@ -15,7 +19,11 @@ class PayrollApp extends StatelessWidget {
     return GetMaterialApp(
       theme: theme,
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: Sizer(
+        builder: (context, orientation, deviceType) {
+          return LoginScreen();
+        },
+      ),
     );
   }
 }
