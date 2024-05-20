@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
-
 import '../../themes/theme_helper.dart';
 
 

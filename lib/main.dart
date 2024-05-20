@@ -17,7 +17,7 @@ class PayrollApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: theme,
+      theme: ThemeHelper().themeData(),
       debugShowCheckedModeBanner: false,
       home: Sizer(
         builder: (context, orientation, deviceType) {

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
-import 'package:payroll_ui_model_gtx/core/widgets/custom_button_styles.dart';
-import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
-import 'package:payroll_ui_model_gtx/core/widgets/custom_text_form_field.dart';
-import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
-import 'package:payroll_ui_model_gtx/screens/signup_with_otp_screen/controller/signup_with_otp_controller.dart';
-import 'package:payroll_ui_model_gtx/themes/theme_helper.dart';
+import '../../core/widgets/custom_button_styles.dart';
 import '../../core/widgets/custom_drop_down.dart';
+import '../../core/widgets/custom_elevated_button.dart';
 import '../../core/widgets/custom_pincode.dart';
+import '../../core/widgets/custom_text_form_field.dart';
+import '../../core/widgets/custom_text_styles.dart';
+import '../../themes/theme_helper.dart';
+import '../../utils/size_utils.dart';
+import 'controller/signup_with_otp_controller.dart';
 
 // ignore: must_be_immutable
 class SignupWithOtpScreen extends StatelessWidget {
