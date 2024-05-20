@@ -17,125 +17,118 @@ class LoginScreen extends GetWidget<LoginController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Sizer(
-        builder: (context, orientation, deviceType) {
-          return Scaffold(
-            backgroundColor: theme.colorScheme.onPrimary,
-            resizeToAvoidBottomInset: false,
-            body: SizedBox(
-              width: SizeUtils.width,
-              child: SingleChildScrollView(
-                padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom,
-                ),
+      child: Scaffold(
+        backgroundColor: theme.colorScheme.onPrimary,
+        resizeToAvoidBottomInset: false,
+        body: SizedBox(
+          width: SizeUtils.width,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: SizedBox(
+              height: SizeUtils.height,
+              child: Form(
+                key: formKey,
                 child: SizedBox(
-                  height: SizeUtils.height,
-                  child: Form(
-                    key: formKey,
-                    child: SizedBox(
-                      height: 768.v,
-                      width: 402.h,
-                      child: Stack(
-                        alignment: Alignment.topCenter,
-                        children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 28.h,
-                                vertical: 62.v,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 2.h),
-                                    child: Text(
-                                      "Hello!",
-                                      style:
-                                          CustomTextStyles.displayMediumBlack,
-                                    ),
-                                  ),
-                                  SizedBox(height: 13.v),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 2.h),
-                                    child: Text(
-                                      "Welcome Back :)",
-                                      style: CustomTextStyles.titleMediumBold,
-                                    ),
-                                  ),
-                                  SizedBox(height: 2.v),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 2.h),
-                                    child: Text(
-                                      "Please login to your account.",
-                                      style: CustomTextStyles.labelLargeGray600,
-                                    ),
-                                  ),
-                                  SizedBox(height: 46.v),
-                                  buildInputFieldUsername(context),
-                                  SizedBox(height: 22.v),
-                                  buildInputFieldPassword(context),
-                                  SizedBox(height: 16.v),
-                                  Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Text(
-                                      "Forgot Password?",
-                                      style: CustomTextStyles
-                                          .titleMediumTealA700SemiBold
-                                          .copyWith(
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: 30.v),
-                                  CustomElevatedButton(
-                                    text: "Login",
-                                    buttonStyle: CustomButtonStyles.fillTealA,
-                                  ),
-                                  Spacer(),
-                                  SizedBox(height: 67.v),
-                                  Align(
-                                    alignment: Alignment.center,
-                                    child: RichText(
-                                      text: TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text: "Don't have an account? ",
-                                            style: CustomTextStyles
-                                                .bodyMediumBluegray500_1
-                                                .copyWith(
-                                              decoration:
-                                                  TextDecoration.underline,
-                                            ),
-                                          ),
-                                          TextSpan(
-                                            text: "SignUp",
-                                            style: CustomTextStyles
-                                                .labelLargeBluegray500Bold
-                                                .copyWith(
-                                              decoration:
-                                                  TextDecoration.underline,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                  height: 768.v,
+                  width: 402.h,
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 28.h,
+                            vertical: 62.v,
                           ),
-                        ],
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(left: 2.h),
+                                child: Text(
+                                  "Hello!",
+                                  style: CustomTextStyles.displayMediumBlack,
+                                ),
+                              ),
+                              SizedBox(height: 13.v),
+                              Padding(
+                                padding: EdgeInsets.only(left: 2.h),
+                                child: Text(
+                                  "Welcome Back :)",
+                                  style: CustomTextStyles.titleMediumBold,
+                                ),
+                              ),
+                              SizedBox(height: 2.v),
+                              Padding(
+                                padding: EdgeInsets.only(left: 2.h),
+                                child: Text(
+                                  "Please login to your account.",
+                                  style: CustomTextStyles.labelLargeGray600,
+                                ),
+                              ),
+                              SizedBox(height: 46.v),
+                              buildInputFieldUsername(context),
+                              SizedBox(height: 22.v),
+                              buildInputFieldPassword(context),
+                              SizedBox(height: 16.v),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  "Forgot Password?",
+                                  style: CustomTextStyles
+                                      .titleMediumTealA700SemiBold
+                                      .copyWith(
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 30.v),
+                              CustomElevatedButton(
+                                text: "Login",
+                                buttonStyle: CustomButtonStyles.fillTealA,
+                              ),
+                              Spacer(),
+                              SizedBox(height: 67.v),
+                              Align(
+                                alignment: Alignment.center,
+                                child: RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: "Don't have an account? ",
+                                        style: CustomTextStyles
+                                            .bodyMediumBluegray500_1
+                                            .copyWith(
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "SignUp",
+                                        style: CustomTextStyles
+                                            .labelLargeBluegray500Bold
+                                            .copyWith(
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }
