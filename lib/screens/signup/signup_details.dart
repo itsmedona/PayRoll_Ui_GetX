@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:payroll_ui_model_gtx/utils/validation_functions.dart';
 import '../../core/widgets/custom_button_styles.dart';
 import '../../core/widgets/custom_elevated_button.dart';
 import '../../core/widgets/custom_text_form_field.dart';
@@ -8,16 +9,10 @@ import '../../themes/theme_helper.dart';
 import '../../utils/size_utils.dart';
 import 'controller/signup_details_controller.dart';
 
-
 // ignore: must_be_immutable
-class SignupDetailsScreen extends StatelessWidget {
+class SignupDetailsScreen extends GetWidget<SignupDetailsController> {
   SignupDetailsScreen({Key? key}) : super(key: key);
 
-  TextEditingController fullNameController = TextEditingController();
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmpasswordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -45,23 +40,23 @@ class SignupDetailsScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 1.h),
                       child: Text(
-                        "SignUp",
+                        "lbl_signup".tr,
                         style: theme.textTheme.displayMedium,
                       ),
                     ),
                     SizedBox(height: 45.v),
-                    buildFullNameSection(context),
+                    buildFullNameSection(),
                     SizedBox(height: 24.v),
-                    buildUserNameSection(context),
+                    buildUserNameSection(),
                     SizedBox(height: 23.v),
-                    buildPhoneNumberSection(context),
+                    buildPhoneNumberSection(),
                     SizedBox(height: 40.v),
-                    buildPasswordSection(context),
+                    buildPasswordSection(),
                     SizedBox(height: 17.v),
-                    buildConfirmPasswordSection(context),
+                    buildConfirmPasswordSection(),
                     SizedBox(height: 37.v),
                     CustomElevatedButton(
-                      text: "Submit",
+                      text: "lbl_submit".tr,
                       margin: EdgeInsets.only(left: 1.h),
                       buttonStyle: CustomButtonStyles.fillTealA,
                     ),
@@ -78,21 +73,27 @@ class SignupDetailsScreen extends StatelessWidget {
 }
 
 //Section Widget
-Widget buildFullNameSection(BuildContext context) {
+Widget buildFullNameSection() {
   return Padding(
     padding: EdgeInsets.only(left: 1.h),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Full Name",
+          "lbl_full_name".tr,
           style: CustomTextStyles.bodyMediumGray50001,
         ),
         SizedBox(height: 6.v),
         CustomTextFormField(
           controller: Get.find<SignupDetailsController>().fullNameController,
-          hintText: "name",
+          hintText: "lbl_name".tr,
           hintStyle: CustomTextStyles.bodyLargeTealA700,
+          validator: (value) {
+            if (!isText(value)) {
+              return "err_msg_please_enter_valid_text".tr;
+            }
+            return null;
+          },
           borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
         )
       ],
@@ -100,21 +101,27 @@ Widget buildFullNameSection(BuildContext context) {
   );
 }
 
-Widget buildUserNameSection(BuildContext context) {
+Widget buildUserNameSection() {
   return Padding(
     padding: EdgeInsets.only(left: 1.h),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Username",
+          "lbl_username".tr,
           style: CustomTextStyles.bodyMediumGray50001,
         ),
         SizedBox(height: 6.v),
         CustomTextFormField(
           controller: Get.find<SignupDetailsController>().userNameController,
-          hintText: "username",
+          hintText: "lbl_username2".tr,
           hintStyle: CustomTextStyles.bodyLargeTealA700,
+           validator: (value) {
+            if (!isText(value)) {
+              return "err_msg_please_enter_valid_text".tr;
+            }
+            return null;
+          },
           borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
         )
       ],
@@ -122,14 +129,14 @@ Widget buildUserNameSection(BuildContext context) {
   );
 }
 
-Widget buildPhoneNumberSection(BuildContext context) {
+Widget buildPhoneNumberSection() {
   return Padding(
     padding: EdgeInsets.only(left: 1.h),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Phone Number",
+          "lbl_phone_number".tr,
           style: CustomTextStyles.bodyMediumGray50001,
         ),
         SizedBox(height: 6.v),
@@ -145,7 +152,7 @@ Widget buildPhoneNumberSection(BuildContext context) {
   );
 }
 
-Widget buildPasswordSection(BuildContext context) {
+Widget buildPasswordSection() {
   return Padding(
     padding: EdgeInsets.only(left: 1.h),
     child: Column(
@@ -181,7 +188,7 @@ Widget buildPasswordSection(BuildContext context) {
   );
 }
 
-Widget buildConfirmPasswordSection(BuildContext context) {
+Widget buildConfirmPasswordSection() {
   return Padding(
     padding: EdgeInsets.only(left: 1.h),
     child: Column(
