@@ -1,13 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import '../../themes/theme_helper.dart';
 
-
 extension TextFormFieldStyleHelper on CustomTextFormField {
   static OutlineInputBorder get outlineTealATL6 => OutlineInputBorder(
       borderRadius: BorderRadius.circular(6.h),
-      borderSide: BorderSide(color: AppTheme.tealA700, width: 1)
+      borderSide: BorderSide(color: AppTheme.tealA700, width: 1));
+  static OutlineInputBorder get outlineTealA => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(6.h),
+      borderSide: BorderSide(color: AppTheme.tealA700, width: 1));
+  static OutlineInputBorder get outlineTealATL61 => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(6.h),
+      borderSide: BorderSide(color: AppTheme.tealA700, width: 1));
+  static OutlineInputBorder get outlineBlueGray => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(6.h),
+      borderSide: BorderSide(color: AppTheme.blueGray500, width: 1));
+  static OutlineInputBorder get outlineBlueGrayTL10 => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10.h),
+      borderSide: BorderSide(color: AppTheme.blueGray200, width: 1));
+  static OutlineInputBorder get fillBlueGray => OutlineInputBorder(
+        borderSide: BorderSide.none,
+      );
+  static UnderlineInputBorder get underLineGray => UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: AppTheme.gray20004,
+        ),
       );
 }
 
@@ -19,11 +38,11 @@ class CustomTextFormField extends StatelessWidget {
       this.scrollPadding,
       this.controller,
       this.focusNode,
-      this.autofocus,
+      this.autofocus = false,
       this.textStyle,
-      this.obscureText,
-      this.textInputAction,
-      this.textInputType,
+      this.obscureText = false,
+      this.textInputAction = TextInputAction.next,
+      this.textInputType = TextInputType.text,
       this.maxLines,
       this.hintText,
       this.hintStyle,
@@ -34,8 +53,11 @@ class CustomTextFormField extends StatelessWidget {
       this.contentPadding,
       this.borderDecoration,
       this.fillColor,
-      this.filled,
-      this.validator});
+      this.filled = true,
+      this.validator})
+      : super(
+          key: key,
+        );
   final Alignment? alignment;
   final double? width;
   final TextEditingController? scrollPadding;
@@ -64,15 +86,15 @@ class CustomTextFormField extends StatelessWidget {
     return alignment != null
         ? Align(
             alignment: alignment ?? Alignment.center,
-            child: TextFormFieldWidget(context))
-        : TextFormFieldWidget(context);
+            child: textFormFieldWidget)
+        : textFormFieldWidget;
   }
 
-  Widget TextFormFieldWidget(BuildContext context) => SizedBox(
+  Widget get textFormFieldWidget => SizedBox(
         width: width ?? double.maxFinite,
         child: TextFormField(
-          scrollPadding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          scrollPadding: EdgeInsets.only(
+              bottom: MediaQuery.of(Get.context!).viewInsets.bottom),
           controller: controller,
           focusNode: focusNode,
           onTapOutside: (event) {
