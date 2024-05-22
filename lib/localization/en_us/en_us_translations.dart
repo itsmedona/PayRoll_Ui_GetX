@@ -10,7 +10,7 @@ final Map<String, String> enUS = {
   "lbl_password":"Password",
   "lbl_welcome_back":"Welcome Back :)",
   "msg":"* * * * * * * * * * * ",
-  "msg_dont_have_an_account":"Dont have an account?  SihnUp",
+  "msg_dont_have_an_account":"Dont have an account?  SignUp",
   "msg_dont_have_an_account2":"Dont have an account? ",
   "msg_forgot_password":"Forgot Password?",
   "msg_please_login_to":"Please login to your account. ",
@@ -44,23 +44,37 @@ final Map<String, String> enUS = {
   "lbl_23":"23%",
   "lbl_55":"55%",
   "lbl_of_8hours":"of 8hours",
-"msg_punch_your_attendence":"Punch Your Attendence",
-"lbl_a":"A",
-"lbl_03h_25m_15s":"03h 25m 15s\n",
-"lbl_5_00_pm":"5.00 PM",
-"lbl_9_00_am":"9.00 AM",
-"lbl_20_feb_2022":"20 Feb 2022",
- "lbl_in_time":"In Time",
+  "msg_punch_your_attendence":"Punch Your Attendence",
+  "lbl_a":"A",
+  "lbl_03h_25m_15s":"03h 25m 15s\n",
+  "lbl_5_00_pm":"5.00 PM",
+  "lbl_9_00_am":"9.00 AM",
+  "lbl_20_feb_2022":"20 Feb 2022",
+  "lbl_in_time":"In Time",
   "lbl_date":"Date",
-   "lbl_today":"Today",
-    "lbl_half_day":"Half Day",
-	  "lbl_absent":"Absent",
-    "lbl_present":" Present",
-	   "lbl_present2":"Present",
-		 "lbl_days_this_month":"Days this Month",
-		   "lbl_attendence":"Attendence",
-       "lbl_ajsal_kp":"Ajsal KP",
-		   "lbl_hello_ajsal_kp":"Hello, Ajsal KP"
+  "lbl_today":"Today",
+  "lbl_half_day":"Half Day",
+	"lbl_absent":"Absent",
+  "lbl_present":" Present",
+	"lbl_present2":"Present",
+	"lbl_days_this_month":"Days this Month",
+	"lbl_attendence":"Attendence",
+  "lbl_ajsal_kp":"Ajsal KP",
+	"lbl_hello_ajsal_kp":"Hello, Ajsal KP"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		   
 
 };
