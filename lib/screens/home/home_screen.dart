@@ -4,9 +4,13 @@ import 'package:payroll_ui_model_gtx/core/widgets/app_bar/appbar_subtitle_four.d
 import 'package:payroll_ui_model_gtx/core/widgets/app_bar/appbar_subtitle_three.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
+import 'package:payroll_ui_model_gtx/routes/app_routes.dart';
+import 'package:payroll_ui_model_gtx/screens/login/login_screen.dart';
+import 'package:payroll_ui_model_gtx/screens/login_with_otp_screen/login_with_otp.dart';
 import 'package:payroll_ui_model_gtx/themes/app_decoration.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import '../../core/widgets/app_bar/custom_app_bar.dart';
+import '../../core/widgets/custom_bottom_bar.dart';
 import '../../themes/theme_helper.dart';
 import 'controller/home_screen_controller.dart';
 
@@ -357,5 +361,43 @@ class HomeScreen extends GetWidget<HomeScreenController> {
         ],
       ),
     );
+  }
+}
+
+//Section Widget
+Widget buildBottomBar() {
+  return CustomBottomBar(
+    onChanged: (BottomBarEnum type) {
+      Get.toNamed(getCurrentRoute(type), id: 1);
+    },
+  );
+}
+
+//Handling route based on bottom click actions
+String getCurrentRoute(BottomBarEnum type) {
+  switch (type) {
+    case BottomBarEnum.Home:
+      return AppRoutes.homeScreen;
+    case BottomBarEnum.Attendence:
+      return AppRoutes.homeScreen;
+    case BottomBarEnum.Settings:
+      return AppRoutes.initialRoute;
+    default:
+      return "/";
+  }
+}
+
+//Handling page based on route
+Widget getCurrentPage(String currentRoute) {
+  switch (currentRoute) {
+    case AppRoutes.homeScreen:
+      return HomeScreen();
+    case AppRoutes.initialRoute:
+      return LoginScreen();
+    case AppRoutes.loginWithOtpScreen:
+      return LoginWithOtpScreen();
+    default:
+      DefaultWidget();
+      throw ();
   }
 }
