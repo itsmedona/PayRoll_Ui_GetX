@@ -5,8 +5,10 @@ import 'package:payroll_ui_model_gtx/core/widgets/app_bar/appbar_subtitle_three.
 import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import 'package:payroll_ui_model_gtx/routes/app_routes.dart';
+import 'package:payroll_ui_model_gtx/screens/attendence/attendence_screen.dart';
 import 'package:payroll_ui_model_gtx/screens/login/login_screen.dart';
 import 'package:payroll_ui_model_gtx/screens/login_with_otp_screen/login_with_otp.dart';
+import 'package:payroll_ui_model_gtx/screens/settings/settings_screen.dart';
 import 'package:payroll_ui_model_gtx/themes/app_decoration.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import '../../core/widgets/app_bar/custom_app_bar.dart';
@@ -379,9 +381,9 @@ String getCurrentRoute(BottomBarEnum type) {
     case BottomBarEnum.Home:
       return AppRoutes.homeScreen;
     case BottomBarEnum.Attendence:
-      return AppRoutes.homeScreen;
+      return AppRoutes.attendenceScreen;
     case BottomBarEnum.Settings:
-      return AppRoutes.initialRoute;
+      return AppRoutes.settingsScreen;
     default:
       return "/";
   }
@@ -392,10 +394,10 @@ Widget getCurrentPage(String currentRoute) {
   switch (currentRoute) {
     case AppRoutes.homeScreen:
       return HomeScreen();
-    case AppRoutes.initialRoute:
-      return LoginScreen();
-    case AppRoutes.loginWithOtpScreen:
-      return LoginWithOtpScreen();
+    case AppRoutes.attendenceScreen:
+      return AttendenceScreen();
+    case AppRoutes.settingsScreen:
+      return SettingsScreen();
     default:
       DefaultWidget();
       throw ();
