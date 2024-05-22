@@ -6,8 +6,6 @@ import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import 'package:payroll_ui_model_gtx/routes/app_routes.dart';
 import 'package:payroll_ui_model_gtx/screens/attendence/attendence_screen.dart';
-import 'package:payroll_ui_model_gtx/screens/login/login_screen.dart';
-import 'package:payroll_ui_model_gtx/screens/login_with_otp_screen/login_with_otp.dart';
 import 'package:payroll_ui_model_gtx/screens/settings/settings_screen.dart';
 import 'package:payroll_ui_model_gtx/themes/app_decoration.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
@@ -77,33 +75,33 @@ class HomeScreen extends GetWidget<HomeScreenController> {
       margin: EdgeInsets.all(0),
       color: theme.colorScheme.onPrimary,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusStyle.circleBorder20),
+        borderRadius: BorderRadiusStyle.circleBorder20,
+      ),
       child: Container(
         height: 213.v,
         width: 373.h,
         padding: EdgeInsets.symmetric(horizontal: 21.h, vertical: 2.v),
-        decoration: AppDecoration.white
-            .copyWith(borderRadius: BorderRadiusStyle.circleBorder20),
+        decoration: AppDecoration.white.copyWith(
+          borderRadius: BorderRadiusStyle.circleBorder20,
+        ),
         child: Stack(
           alignment: Alignment.bottomLeft,
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 22.h, top: 19.v),
-                child: Text(
-                  "lbl_attendence".tr,
-                  style: CustomTextStyles.titleMediumGray900SemiBold,
-                ),
+            Positioned(
+              top: 19.v,
+              left: 22.h,
+              child: Text(
+                "lbl_attendence".tr,
+                style: CustomTextStyles.titleMediumGray900SemiBold,
               ),
             ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: EdgeInsets.only(right: 55.h, bottom: 29.v),
+            Positioned(
+              bottom: 29.v,
+              right: 55.h,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(top: 35.v, bottom: 37.v),
@@ -126,118 +124,75 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                                 height: 1.30,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 116.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(right: 1.h),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  height: 7.adaptSize,
-                                  width: 7.adaptSize,
-                                  margin: EdgeInsets.symmetric(vertical: 6.v),
-                                  decoration: BoxDecoration(
-                                      color: AppTheme.tealA700,
-                                      borderRadius: BorderRadius.circular(3.h)),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 7.h),
-                                  child: Text(
-                                    "lbl_55".tr,
-                                    style:
-                                        CustomTextStyles.titleMediumBluegray800,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 1.h),
-                            child: Text(
-                              "lbl_present2".tr,
-                              style: CustomTextStyles.labelSmallBluegray800,
-                            ),
-                          ),
-                          SizedBox(height: 11.v),
-                          Padding(
-                            padding: EdgeInsets.only(right: 1.h),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Container(
-                                  height: 7.adaptSize,
-                                  width: 7.adaptSize,
-                                  margin: EdgeInsets.symmetric(vertical: 6.v),
-                                  decoration: BoxDecoration(
-                                    color: theme.colorScheme.onPrimaryContainer
-                                        .withOpacity(1),
-                                    borderRadius: BorderRadius.circular(3.h),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 5.h),
-                                  child: Text(
-                                    "lbl_absent".tr,
-                                    style:
-                                        CustomTextStyles.labelSmallBluegray800,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 12.v,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(right: 1.h),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Container(
-                                        height: 7.adaptSize,
-                                        width: 7.adaptSize,
-                                        margin:
-                                            EdgeInsets.symmetric(vertical: 6.v),
-                                        decoration: BoxDecoration(
-                                          color: theme
-                                              .colorScheme.onPrimaryContainer
-                                              .withOpacity(1),
-                                          borderRadius:
-                                              BorderRadius.circular(3.h),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(left: 7.h),
-                                        child: Text(
-                                          "lbl_23".tr,
-                                          style: CustomTextStyles
-                                              .titleMediumBluegray800,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Text(
-                                  "lbl_half_day".tr,
-                                  style: CustomTextStyles.labelSmallBluegray800,
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    )
+                    SizedBox(width: 116.h),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        _buildAttendanceRow(
+                          AppTheme.tealA700,
+                          "lbl_55".tr,
+                          CustomTextStyles.titleMediumBluegray800,
+                          "lbl_present2".tr,
+                        ),
+                        SizedBox(height: 11.v),
+                        _buildAttendanceRow(
+                          AppTheme.tealA700,
+                          "lbl_22".tr,
+                          CustomTextStyles.titleMediumBluegray800,
+                          "lbl_absent".tr,
+                        ),
+                        SizedBox(height: 11.v),
+                        _buildAttendanceRow(
+                          theme.colorScheme.onPrimaryContainer.withOpacity(1),
+                          "lbl_23".tr,
+                          CustomTextStyles.titleMediumBluegray800,
+                          "lbl_half_day".tr,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildAttendanceRow(
+      Color dotColor, String text, TextStyle textStyle, String? labelText) {
+    return Padding(
+      padding: EdgeInsets.only(right: 1.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            height: 7.adaptSize,
+            width: 7.adaptSize,
+            margin: EdgeInsets.symmetric(vertical: 6.v),
+            decoration: BoxDecoration(
+              color: dotColor,
+              borderRadius: BorderRadius.circular(3.h),
+            ),
+          ),
+          SizedBox(width: 7.h),
+          Text(
+            text,
+            style: textStyle,
+          ),
+          if (labelText != null) ...[
+            SizedBox(width: 7.h),
+            Text(
+              labelText,
+              style: CustomTextStyles.labelSmallBluegray800,
+            ),
+          ],
+        ],
       ),
     );
   }
