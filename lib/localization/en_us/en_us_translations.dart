@@ -1,5 +1,9 @@
 final Map<String, String> enUS = {
   //Splash Screen
+  "lbl_company_name":"Company Name",
+  "lbl_logo":"logo",
+  "lbl_powered_by":"powered by\n",
+  "msg_powered_by_company":"powered by\nCompany Name",
 
   //Login Screen
   "lbl_hello":"Hello!",
