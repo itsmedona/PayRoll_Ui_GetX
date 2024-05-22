@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/screens/home/home_screen.dart';
+import 'package:payroll_ui_model_gtx/localization/app_localization.dart';
+import 'package:payroll_ui_model_gtx/routes/app_routes.dart';
+//import 'package:payroll_ui_model_gtx/screens/home/home_screen.dart';
 import 'package:payroll_ui_model_gtx/screens/login/controller/login_controller.dart';
 //import 'package:payroll_ui_model_gtx/screens/login/login_screen.dart';
 import 'package:payroll_ui_model_gtx/utils/pref_utils.dart';
@@ -19,18 +21,16 @@ class PayrollApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, deviceType) {
-        return GetMaterialApp(
-          theme: ThemeHelper().themeData(),
-          debugShowCheckedModeBanner: false,
-          home: Sizer(
-            builder: (context, orientation, deviceType) {
-              return HomeScreen();
-            },
-          ),
-        );
-      },
-    );
+    return Sizer(builder: (context, orientation, deviceType) {
+      return GetMaterialApp(
+        theme: theme,
+        translations: AppLocalization(),
+        locale: Get.deviceLocale,
+        fallbackLocale: Locale('en', 'US'),
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppRoutes.homeScreen,
+        getPages: AppRoutes.pages,
+      );
+    });
   }
 }
