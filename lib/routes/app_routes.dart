@@ -22,7 +22,7 @@ class AppRoutes {
     GetPage(
       name: attendenceScreen,
       page: () => AttendenceScreen(),
-      //bindings: [AttendeneBinding()],
+      //bindings: [AttendenceBinding()],
     ),
     GetPage(
       name: settingsScreen,

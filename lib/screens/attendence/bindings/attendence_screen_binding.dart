@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/screens/home/controller/home_screen_controller.dart';
+import '../controller/attendence_screen_controller.dart';
 
 class AttendenceScreenBinding extends Bindings {
   @override
