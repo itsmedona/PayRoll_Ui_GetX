@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/screens/attendence/attendence_screen.dart';
-import 'package:payroll_ui_model_gtx/screens/attendence/bindings/attendence_binding.dart';
 import 'package:payroll_ui_model_gtx/screens/home/bindings/home_screen_binding.dart';
 import 'package:payroll_ui_model_gtx/screens/home/home_screen.dart';
 import 'package:payroll_ui_model_gtx/screens/login/binding/login_binding.dart';
@@ -23,7 +22,7 @@ class AppRoutes {
     GetPage(
       name: attendenceScreen,
       page: () => AttendenceScreen(),
-      bindings: [AttendeneBinding()],
+      //bindings: [AttendeneBinding()],
     ),
     GetPage(
       name: settingsScreen,

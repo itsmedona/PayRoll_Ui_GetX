@@ -152,6 +152,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                           CustomTextStyles.titleMediumBluegray800,
                           "lbl_half_day".tr,
                         ),
+                        SizedBox(height: 11.v),
                       ],
                     ),
                   ],
@@ -233,6 +234,13 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                 ),
                 Text(
                   "lbl_in_time".tr,
+                  style: CustomTextStyles.titleSmallBlack900SemiBold,
+                ),
+                Spacer(
+                  flex: 45,
+                ),
+                Text(
+                  "lbl_out_time".tr,
                   style: CustomTextStyles.titleSmallBlack900SemiBold,
                 )
               ],
