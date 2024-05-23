@@ -28,12 +28,19 @@ final Map<String, String> enUS = {
   "msg_something_went_wrong": "Something Went Wrong",
 
   //Common String
+  ";bl_0": "0",
+  "lbl_1": "1",
+  "lbl_3": "/3",
+  "lbl_32": "3",
+  "lbl_5": "5",
   "lbl_91": "+91",
   "lbl_9876543210": "9876543210",
   "lbl_full_name": "Full Name",
   "lbl_login": "Login",
   "lbl_mobile_number": "Mobile Number",
   "lbl_name": "name",
+  "lbl_settings": "Settings",
+  "lbl_show_report": "Show Report",
   "lbl_signup": "SignUp",
   "lbl_submit": "Submit",
   "lbl_username": "Username",
@@ -61,5 +68,8 @@ final Map<String, String> enUS = {
   "lbl_days_this_month": "Days this Month",
   "lbl_attendence": "Attendence",
   "lbl_ajsal_kp": "Ajsal KP",
-  "lbl_hello_ajsal_kp": "Hello, Ajsal KP"
+  "lbl_hello_ajsal_kp": "Hello, Ajsal KP",
+
+  //Attendence Screen
+  "msg_mark_all_absent": "Mark all absent as present",
 };
