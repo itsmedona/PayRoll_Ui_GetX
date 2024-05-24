@@ -6,6 +6,7 @@ final Map<String, String> enUS = {
   "msg_powered_by_company": "powered by\nCompany Name",
 
   //Login Screen
+  "err_msg_please_enter_valid_password":"Please enter valid password",
   "lbl_hello": "Hello!",
   "lbl_password": "Password",
   "lbl_welcome_back": "Welcome Back :)",
@@ -76,7 +77,7 @@ final Map<String, String> enUS = {
   "msg_mark_all_absent": "Mark all absent as present",
 
   //Leave Request Screen
-   "lbl_enter_reason":"Enter reason",
+  "lbl_enter_reason":"Enter reason",
   "lbl_leave_request":"Leave Request",
  
 };

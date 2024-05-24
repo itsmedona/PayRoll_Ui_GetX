@@ -93,9 +93,8 @@ class LoginScreen extends StatelessWidget {
                                 text: "lbl_login".tr,
                                 buttonStyle: CustomButtonStyles.fillTealA,
                                 onPressed: () {
-                                  if (formKey.currentState?.validate() ?? false) {
-                                
-                                  }
+                                  if (formKey.currentState?.validate() ??
+                                      false) {}
                                 },
                               ),
                               Spacer(),
@@ -106,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: "msg_dont_have_account2".tr,
+                                        text: "msg_dont_have_an_account2".tr,
                                         style: CustomTextStyles
                                             .bodyMediumBluegray500_1
                                             .copyWith(
@@ -216,7 +215,8 @@ class LoginScreen extends StatelessWidget {
             ),
             suffixConstraints: BoxConstraints(maxHeight: 48.v),
             validator: (value) {
-              if (value == null || (!isValidPassword(value, isRequired: true))) {
+              if (value == null ||
+                  (!isValidPassword(value, isRequired: true))) {
                 return "err_msg_please_enter_valid_password".tr;
               }
               return null;
