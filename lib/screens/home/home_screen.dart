@@ -19,26 +19,27 @@ class HomeScreen extends GetWidget<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      appBar: buildAppBar(),
-      body: Container(
-        width: 402.h,
-        padding: EdgeInsets.all(14.h),
-        child: Column(
-          children: [
-            buildAttendenceStack(),
-            SizedBox(height: 20.v),
-            CustomElevatedButton(
-              text: "msg_punch_your_attendence".tr,
-              margin: EdgeInsets.symmetric(horizontal: 3.h),
-            ),
-            SizedBox(height: 22.v),
-            buildTodayColumn()
-          ],
+      child: Scaffold(
+        appBar: buildAppBar(),
+        body: Container(
+          width: 402.h,
+          padding: EdgeInsets.all(14.h),
+          child: Column(
+            children: [
+              buildAttendenceStack(),
+              SizedBox(height: 20.v),
+              CustomElevatedButton(
+                text: "msg_punch_your_attendence".tr,
+                margin: EdgeInsets.symmetric(horizontal: 3.h),
+              ),
+              SizedBox(height: 22.v),
+              buildTodayColumn()
+            ],
+          ),
         ),
+        bottomNavigationBar: buildBottomBar(), // Add bottom navigation bar here
       ),
-      bottomNavigationBar: buildBottomBar(),
-    ));
+    );
   }
 
   //Section Widget
@@ -62,7 +63,6 @@ class HomeScreen extends GetWidget<HomeScreenController> {
           ],
         ),
       ),
-//actions:[],
       styleType: Style.bgFill,
     );
   }
@@ -333,7 +333,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
 Widget buildBottomBar() {
   return CustomBottomBar(
     onChanged: (BottomBarEnum type) {
-      Get.toNamed(getCurrentRoute(type), id: 1);
+      Get.toNamed(getCurrentRoute(type));
     },
   );
 }
@@ -361,8 +361,8 @@ Widget getCurrentPage(String currentRoute) {
       return AttendenceScreen();
     case AppRoutes.settingsScreen:
       return SettingsScreen();
-   default:
-      DefaultWidget();
+    default:
+      HomeScreen();
       throw ();
   }
 }

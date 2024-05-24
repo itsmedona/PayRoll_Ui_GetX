@@ -6,7 +6,7 @@ final Map<String, String> enUS = {
   "msg_powered_by_company": "powered by\nCompany Name",
 
   //Login Screen
-  "err_msg_please_enter_valid_password":"Please enter valid password",
+  "err_msg_please_enter_valid_password": "Please enter valid password",
   "lbl_hello": "Hello!",
   "lbl_password": "Password",
   "lbl_welcome_back": "Welcome Back :)",
@@ -45,8 +45,8 @@ final Map<String, String> enUS = {
   "lbl_signup": "SignUp",
   "lbl_submit": "Submit",
   "lbl_username": "Username",
-  "msg_from_select_date":"From : (Select Date)",
-  "msg_to_select_date":"To : (Select Date)",
+  "msg_from_select_date": "From : (Select Date)",
+  "msg_to_select_date": "To : (Select Date)",
 
   //HomeScreen
   "lbl_21": "21",
@@ -66,6 +66,7 @@ final Map<String, String> enUS = {
   "lbl_today": "Today",
   "lbl_half_day": "Half Day",
   "lbl_absent": "Absent",
+  "lbl_home": "Home",
   "lbl_present": " Present",
   "lbl_present2": "Present",
   "lbl_days_this_month": "Days this Month",
@@ -77,7 +78,6 @@ final Map<String, String> enUS = {
   "msg_mark_all_absent": "Mark all absent as present",
 
   //Leave Request Screen
-  "lbl_enter_reason":"Enter reason",
-  "lbl_leave_request":"Leave Request",
- 
+  "lbl_enter_reason": "Enter reason",
+  "lbl_leave_request": "Leave Request",
 };

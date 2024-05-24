@@ -1,7 +1,8 @@
-// ignore: must_be_immutable
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:payroll_ui_model_gtx/screens/attendence/widget/view_hierarchy_item_widget.dart';
+import 'package:payroll_ui_model_gtx/screens/home/home_screen.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import '../../core/widgets/app_bar/appbar_subtitle_four.dart';
 import '../../core/widgets/app_bar/appbar_subtitle_three.dart';
@@ -12,17 +13,16 @@ import '../../themes/app_decoration.dart';
 import '../../themes/theme_helper.dart';
 import 'controller/attendence_screen_controller.dart';
 import 'model/view_hierarchy_item_model.dart';
-import 'widget/view_hierarchy_item_widget.dart';
 
 // ignore: must_be_immutable
 class AttendenceScreen extends StatelessWidget {
   AttendenceScreen({Key? key}) : super(key: key);
 
-  AttendenceScreenController controller =
-      Get.put(AttendenceScreenController(AttendenceScreenModel().obs));
-
   @override
   Widget build(BuildContext context) {
+    AttendenceScreenController controller =
+        Get.put(AttendenceScreenController(AttendenceScreenModel().obs));
+
     return SafeArea(
       child: Scaffold(
         appBar: buildAppbar(),
@@ -52,11 +52,17 @@ class AttendenceScreen extends StatelessWidget {
                             borderRadius: BorderRadiusStyle.roundedBorder10),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
-                          children: [SizedBox(height: 12.v)],
+                          children: [
+                            SizedBox(
+                              height: 12.v,
+                            ),
+                            buildCalender(controller)
+                          ],
                         ),
                       ),
                     ),
-                    buildRowpresenttext()
+                    buildRowpresenttext(
+                        controller, MediaQuery.of(context).size.width)
                   ],
                 ),
               ),
@@ -68,6 +74,7 @@ class AttendenceScreen extends StatelessWidget {
             ],
           ),
         ),
+        bottomNavigationBar: buildBottomBar(),
       ),
     );
   }
@@ -90,7 +97,6 @@ PreferredSizeWidget buildAppbar() {
         ],
       ),
     ),
-    // actions: [],
     styleType: Style.bgFill,
   );
 }
@@ -132,8 +138,7 @@ Widget buildRowattendence() {
 }
 
 //Section Widget
-Widget buildCalender() {
-  var controller;
+Widget buildCalender(AttendenceScreenController controller) {
   return Obx(
     () => SizedBox(
       height: 290.v,
@@ -171,9 +176,9 @@ Widget buildCalender() {
           weekdayLabels: ["S", "M", "T", "W", "T", "F", "S"],
           dayBorderRadius: BorderRadius.circular(8.h),
         ),
+        // ignore: invalid_use_of_protected_member
         value: controller.selectedDatesFromCalender.value,
         onValueChanged: (dates) {
-          var controller;
           controller.selectedDatesFromCalender.value = dates;
         },
       ),
@@ -181,9 +186,8 @@ Widget buildCalender() {
   );
 }
 
-//Section Widget
-Widget buildRowpresenttext() {
-  var controller;
+Widget buildRowpresenttext(
+    AttendenceScreenController controller, double width) {
   return Align(
     alignment: Alignment.topCenter,
     child: Padding(
@@ -192,114 +196,118 @@ Widget buildRowpresenttext() {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Obx(
-            () => GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 63.v,
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 14.h,
-                  crossAxisSpacing: 14.h),
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: controller.attendenceScreenModelObj.value
-                  .viewhierarchyItemList.value.length,
-              itemBuilder: (context, index) {
-                ViewhierarchyItemModel model = controller
-                    .attendenceScreenModeObj
-                    .value
-                    .viewhierarchyItemList
-                    .value[index];
-                return ViewhierarchyItemWidget(
-                  model,
-                );
-              },
+          Expanded(
+            // Apply Expanded to ensure the GridView fits within available space
+            child: SizedBox(
+              width: width * 0.6, // Limiting width to 60% of available space
+              child: Obx(
+                () => GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisExtent: 63.v,
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 14.h,
+                    crossAxisSpacing: 14.h,
+                  ),
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: controller.attendenceScreenModelObj.value
+                      .viewhierarchyItemList.length,
+                  itemBuilder: (context, index) {
+                    ViewhierarchyItemModel model = controller
+                        .attendenceScreenModelObj
+                        .value
+                        .viewhierarchyItemList[index] as ViewhierarchyItemModel;
+                    return ViewhierarchyItemWidget(
+                      model,
+                    );
+                  },
+                ),
+              ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 14.h),
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 1.h),
-                  decoration: AppDecoration.fillAmber300,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      SizedBox(
-                        height: 62.v,
-                        child: VerticalDivider(
-                          width: 1.h,
-                          thickness: 1.v,
-                          color: AppTheme.amber300,
-                        ),
+          SizedBox(
+              width: 20
+                  .h), // Adding some space between the GridView and other content
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 1.h),
+                decoration: AppDecoration.fillAmber300,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    SizedBox(
+                      height: 62.v,
+                      child: VerticalDivider(
+                        width: 1.h,
+                        thickness: 1.v,
+                        color: AppTheme.amber300,
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsets.only(left: 13.h, top: 8.v, bottom: 6.v),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "lbl_half_days".tr,
-                              style:
-                                  CustomTextStyles.bodySmallInterBluegray40012,
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsets.only(left: 13.h, top: 8.v, bottom: 6.v),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "lbl_half_days".tr,
+                            style: CustomTextStyles.bodySmallInterBluegray40012,
+                          ),
+                          SizedBox(height: 1.v),
+                          Padding(
+                            padding: EdgeInsets.only(left: 2.h),
+                            child: Text(
+                              "lbl_1".tr,
+                              style: CustomTextStyles.headlineSmallBlack900,
                             ),
-                            SizedBox(
-                              height: 1.v,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 2.h),
-                              child: Text(
-                                "lbl_1".tr,
-                                style: CustomTextStyles.headlineSmallBlack900,
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
                 ),
-                SizedBox(height: 9.v),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 1.h),
-                  decoration: AppDecoration.fillDeepPurple,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(
-                        height: 62.v,
-                        child: VerticalDivider(
-                          width: 1.h,
-                          thickness: 1.v,
-                          color: AppTheme.deepPurple900,
-                        ),
+              ),
+              SizedBox(height: 9.v),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 1.h),
+                decoration: AppDecoration.fillDeepPurple,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(
+                      height: 62.v,
+                      child: VerticalDivider(
+                        width: 1.h,
+                        thickness: 1.v,
+                        color: AppTheme.deepPurple900,
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(12.h, 9.v, 7.h, 6.v),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "lbl_remaining_leave".tr,
-                              style: CustomTextStyles.bodySmallInterBuegray400,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(12.h, 9.v, 7.h, 6.v),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "lbl_remaining_leave".tr,
+                            style: CustomTextStyles.bodySmallInterBuegray400,
+                          ),
+                          SizedBox(height: 1.v),
+                          Padding(
+                            padding: EdgeInsets.only(left: 3.h),
+                            child: Text(
+                              "lbl_1".tr,
+                              style: CustomTextStyles.headlineSmallBlack900,
                             ),
-                            SizedBox(height: 1.v),
-                            Padding(
-                              padding: EdgeInsets.only(left: 3.h),
-                              child: Text(
-                                "lbl_1".tr,
-                                style: CustomTextStyles.headlineSmallBlack900,
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
           )
         ],
       ),

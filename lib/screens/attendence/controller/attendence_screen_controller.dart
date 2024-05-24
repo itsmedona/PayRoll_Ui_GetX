@@ -1,14 +1,22 @@
 import 'package:get/get.dart';
-import 'package:payroll_ui_model_gtx/screens/attendence/model/view_hierarchy_item_model.dart';
+
+import '../model/view_hierarchy_item_model.dart';
 
 class AttendenceScreenController extends GetxController {
-  Rx<AttendenceScreenModel> attendenceScreenModelObj = AttendenceScreenModel().obs;
+  // Initialize selectedDatesFromCalender with an empty RxList<DateTime?>
+  RxList<DateTime?> selectedDatesFromCalender = <DateTime?>[].obs;
+  Rx<AttendenceScreenModel> attendenceScreenModelObj =
+      AttendenceScreenModel().obs;
 
-  AttendenceScreenController(obs);
+  AttendenceScreenController(Rx<AttendenceScreenModel> obs) {
+    attendenceScreenModelObj = AttendenceScreenModel().obs;
+  }
 
-  List<Rx<ViewhierarchyItemModel>> get viewhierarchyItemList => attendenceScreenModelObj.value.viewhierarchyItemList;
+  List<Rx<ViewhierarchyItemModel>> get viewhierarchyItemList =>
+      attendenceScreenModelObj.value.viewhierarchyItemList;
 }
 
 class AttendenceScreenModel {
-  RxList<Rx<ViewhierarchyItemModel>> viewhierarchyItemList = <Rx<ViewhierarchyItemModel>>[].obs;
+  RxList<Rx<ViewhierarchyItemModel>> viewhierarchyItemList =
+      <Rx<ViewhierarchyItemModel>>[].obs;
 }

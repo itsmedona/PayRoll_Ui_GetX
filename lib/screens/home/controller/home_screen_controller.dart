@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
-import '../models/home_screen_model.dart';
 
 class HomeScreenController extends GetxController {
-  Rx<HomeScreenModel> homeScreenModelObj = HomeScreenModel().obs;
+  var selectedIndex = 0.obs;
+
+  void changeIndex(int index) {
+    selectedIndex.value = index;
+  }
 }

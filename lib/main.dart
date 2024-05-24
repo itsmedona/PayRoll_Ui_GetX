@@ -31,7 +31,7 @@ class PayrollApp extends StatelessWidget {
         locale: Get.deviceLocale,
         fallbackLocale: Locale('en', 'US'),
         debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.initialRoute,
+        initialRoute: AppRoutes.homeScreen,
         getPages: AppRoutes.pages,
       );
     });

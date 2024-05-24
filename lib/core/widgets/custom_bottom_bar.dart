@@ -1,34 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
-import 'package:payroll_ui_model_gtx/themes/app_decoration.dart';
 import 'package:payroll_ui_model_gtx/themes/theme_helper.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 
 enum BottomBarEnum { Home, Attendence, Settings }
 
-// ignore: must_be_immutable
 class CustomBottomBar extends StatelessWidget {
   CustomBottomBar({Key? key, this.onChanged}) : super(key: key);
 
-  RxInt selectedIndex = 0.obs;
+  final RxInt selectedIndex = 0.obs;
 
   final List<BottomMenuModel> bottomMenuList = [
     BottomMenuModel(
       icon: Icons.home,
-      activeIcon: Icons.home,
       title: "lbl_home".tr,
       type: BottomBarEnum.Home,
     ),
     BottomMenuModel(
       icon: Icons.fingerprint,
-      activeIcon: Icons.fingerprint,
       title: "lbl_attendence".tr,
       type: BottomBarEnum.Attendence,
     ),
     BottomMenuModel(
       icon: Icons.settings,
-      activeIcon: Icons.settings,
       title: "lbl_settings".tr,
       type: BottomBarEnum.Settings,
     ),
@@ -41,7 +36,10 @@ class CustomBottomBar extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Divider(color: AppTheme.gray20003),
+        SizedBox(
+          width: 376.h,
+          child: Divider(color: AppTheme.gray20003),
+        ),
         SizedBox(
           height: 77.v,
           child: Obx(() => BottomNavigationBar(
@@ -53,10 +51,64 @@ class CustomBottomBar extends StatelessWidget {
                 currentIndex: selectedIndex.value,
                 type: BottomNavigationBarType.fixed,
                 items: List.generate(bottomMenuList.length, (index) {
-                  final menuItem = bottomMenuList[index];
+                  final item = bottomMenuList[index];
                   return BottomNavigationBarItem(
-                    icon: _buildMenuItem(menuItem, context, false),
-                    activeIcon: _buildMenuItem(menuItem, context, true),
+                    icon: Container(
+                      width: 135.h,
+                      height: 76.v,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsets.fromLTRB(34.h, 47.v, 34.h, 12.v),
+                            child: Text(
+                              item.title ?? "",
+                              style:
+                                  CustomTextStyles.bodyMediumPrimary.copyWith(
+                                color: theme.colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 18.v,
+                            child: Icon(
+                              item.icon,
+                              size: 26.adaptSize,
+                              color: theme.colorScheme.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    activeIcon: Container(
+                      width: 135.h,
+                      height: 76.v,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsets.fromLTRB(34.h, 47.v, 34.h, 12.v),
+                            child: Text(
+                              item.title ?? "",
+                              style:
+                                  CustomTextStyles.bodyMediumPrimary.copyWith(
+                                color: theme.colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 18.v,
+                            child: Icon(
+                              item.icon,
+                              size: 26.adaptSize,
+                              color: theme.colorScheme.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     label: '',
                   );
                 }),
@@ -69,62 +121,22 @@ class CustomBottomBar extends StatelessWidget {
       ],
     );
   }
-
-  Widget _buildMenuItem(BottomMenuModel menuItem, BuildContext context, bool isActive) {
-    final theme = Theme.of(context);
-    final textStyle = isActive
-        ? CustomTextStyles.labelLargePrimary.copyWith(color: theme.colorScheme.primary)
-        : CustomTextStyles.bodyMediumPrimary.copyWith(color: theme.colorScheme.primary);
-
-    return Container(
-      decoration: AppDecoration.white,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Divider(),
-          Expanded(
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(34.h, 47.v, 34.h, 12.v),
-                    child: Text(
-                      menuItem.title ?? "",
-                      style: textStyle,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Icon(menuItem.icon, color: isActive ? theme.colorScheme.primary : null),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 class BottomMenuModel {
   BottomMenuModel({
     required this.icon,
-    required this.activeIcon,
     this.title,
     required this.type,
   });
 
   final IconData icon;
-  final IconData activeIcon;
   final String? title;
   final BottomBarEnum type;
 }
+
 class DefaultWidget extends StatelessWidget {
-  const DefaultWidget({super.key});
+  const DefaultWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -136,10 +148,10 @@ class DefaultWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Replace the respective widget here",
-            style: TextStyle(
-              fontSize: 18
-            ),)
+            Text(
+              "Replace the respective widget here",
+              style: TextStyle(fontSize: 18),
+            )
           ],
         ),
       ),
