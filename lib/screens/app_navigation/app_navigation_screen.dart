@@ -35,9 +35,9 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                             onTapScreenTitle(AppRoutes.attendenceScreen)
                             ),        
                     buildScreenTitle(
-                        screenTitle: "lbl_settings".tr,
+                        screenTitle: "lbl_profile".tr,
                         onTapScreenTitle: () =>
-                            onTapScreenTitle(AppRoutes.settingsScreen)
+                            onTapScreenTitle(AppRoutes.profileScreen)
                             ),        
                   ],
                 ),

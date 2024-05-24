@@ -12,6 +12,7 @@ import '../../core/widgets/custom_text_styles.dart';
 import '../../themes/app_decoration.dart';
 import '../../themes/theme_helper.dart';
 import 'controller/attendence_screen_controller.dart';
+import 'model/attendence_screen_model.dart';
 import 'model/view_hierarchy_item_model.dart';
 
 // ignore: must_be_immutable
@@ -211,12 +212,13 @@ Widget buildRowpresenttext(
                   ),
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: controller.attendenceScreenModelObj.value
-                      .viewhierarchyItemList.length,
+                      .viewhierarchyItemList.value.length,
                   itemBuilder: (context, index) {
                     ViewhierarchyItemModel model = controller
                         .attendenceScreenModelObj
                         .value
-                        .viewhierarchyItemList[index] as ViewhierarchyItemModel;
+                        .viewhierarchyItemList
+                        .value[index];
                     return ViewhierarchyItemWidget(
                       model,
                     );

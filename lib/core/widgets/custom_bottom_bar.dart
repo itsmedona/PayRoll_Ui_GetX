@@ -4,7 +4,7 @@ import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import 'package:payroll_ui_model_gtx/themes/theme_helper.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 
-enum BottomBarEnum { Home, Attendence, Settings }
+enum BottomBarEnum { Home, Attendence, Settings, Profile }
 
 class CustomBottomBar extends StatelessWidget {
   CustomBottomBar({Key? key, this.onChanged}) : super(key: key);

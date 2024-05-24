@@ -6,7 +6,7 @@ import 'package:payroll_ui_model_gtx/core/widgets/custom_elevated_button.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
 import 'package:payroll_ui_model_gtx/routes/app_routes.dart';
 import 'package:payroll_ui_model_gtx/screens/attendence/attendence_screen.dart';
-import 'package:payroll_ui_model_gtx/screens/settings/settings_screen.dart';
+import 'package:payroll_ui_model_gtx/screens/profile/profile_screen.dart';
 import 'package:payroll_ui_model_gtx/themes/app_decoration.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import '../../core/widgets/app_bar/custom_app_bar.dart';
@@ -345,8 +345,8 @@ String getCurrentRoute(BottomBarEnum type) {
       return AppRoutes.homeScreen;
     case BottomBarEnum.Attendence:
       return AppRoutes.attendenceScreen;
-    case BottomBarEnum.Settings:
-      return AppRoutes.settingsScreen;
+    case BottomBarEnum.Profile:
+      return AppRoutes.profileScreen;
     default:
       return "/";
   }
@@ -359,8 +359,8 @@ Widget getCurrentPage(String currentRoute) {
       return HomeScreen();
     case AppRoutes.attendenceScreen:
       return AttendenceScreen();
-    case AppRoutes.settingsScreen:
-      return SettingsScreen();
+    case AppRoutes.profileScreen:
+      return ProfileScreen();
     default:
       HomeScreen();
       throw ();

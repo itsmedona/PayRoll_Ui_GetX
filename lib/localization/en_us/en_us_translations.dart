@@ -75,6 +75,8 @@ final Map<String, String> enUS = {
   "lbl_hello_ajsal_kp": "Hello, Ajsal KP",
 
   //Attendence Screen
+  "lbl_half_days": "Half Days",
+  "lbl_remaining_leave": "Remaining Leave",
   "msg_mark_all_absent": "Mark all absent as present",
 
   //Leave Request Screen

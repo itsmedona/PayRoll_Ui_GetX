@@ -1,22 +1,10 @@
 import 'package:get/get.dart';
 
-import '../model/view_hierarchy_item_model.dart';
+import '../model/attendence_screen_model.dart';
 
 class AttendenceScreenController extends GetxController {
   // Initialize selectedDatesFromCalender with an empty RxList<DateTime?>
-  RxList<DateTime?> selectedDatesFromCalender = <DateTime?>[].obs;
-  Rx<AttendenceScreenModel> attendenceScreenModelObj =
-      AttendenceScreenModel().obs;
-
-  AttendenceScreenController(Rx<AttendenceScreenModel> obs) {
-    attendenceScreenModelObj = AttendenceScreenModel().obs;
-  }
-
-  List<Rx<ViewhierarchyItemModel>> get viewhierarchyItemList =>
-      attendenceScreenModelObj.value.viewhierarchyItemList;
-}
-
-class AttendenceScreenModel {
-  RxList<Rx<ViewhierarchyItemModel>> viewhierarchyItemList =
-      <Rx<ViewhierarchyItemModel>>[].obs;
+  AttendenceScreenController(this.attendenceScreenModelObj);
+  Rx<AttendenceScreenModel> attendenceScreenModelObj;
+  Rx<List<DateTime?>> selectedDatesFromCalender = Rx([]);
 }
