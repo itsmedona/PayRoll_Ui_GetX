@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+/*import 'package:get/get.dart';
 import '../controller/attendence_screen_controller.dart';
 
 class AttendenceScreenBinding extends Bindings {
@@ -7,3 +7,4 @@ class AttendenceScreenBinding extends Bindings {
     Get.lazyPut(() => AttendenceScreenController());
   }
 }
+*/

@@ -37,7 +37,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
           ],
         ),
       ),
-      //bottomNavigationBar: buildBottomBar(),
+      bottomNavigationBar: buildBottomBar(),
     ));
   }
 
@@ -361,7 +361,7 @@ Widget getCurrentPage(String currentRoute) {
       return AttendenceScreen();
     case AppRoutes.settingsScreen:
       return SettingsScreen();
-    default:
+   default:
       DefaultWidget();
       throw ();
   }

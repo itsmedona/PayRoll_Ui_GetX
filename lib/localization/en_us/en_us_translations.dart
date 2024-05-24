@@ -44,6 +44,8 @@ final Map<String, String> enUS = {
   "lbl_signup": "SignUp",
   "lbl_submit": "Submit",
   "lbl_username": "Username",
+  "msg_from_select_date":"From : (Select Date)",
+  "msg_to_select_date":"To : (Select Date)",
 
   //HomeScreen
   "lbl_21": "21",
@@ -72,4 +74,9 @@ final Map<String, String> enUS = {
 
   //Attendence Screen
   "msg_mark_all_absent": "Mark all absent as present",
+
+  //Leave Request Screen
+   "lbl_enter_reason":"Enter reason",
+  "lbl_leave_request":"Leave Request",
+ 
 };
