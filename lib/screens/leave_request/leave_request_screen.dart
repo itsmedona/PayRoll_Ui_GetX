@@ -15,8 +15,6 @@ import '../../core/widgets/custom_text_styles.dart';
 class LeaveRequestScreen extends GetWidget<LeaveRequestController> {
   const LeaveRequestScreen({Key? key}) : super(key: key);
   @override
-
-
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
@@ -128,8 +126,7 @@ class LeaveRequestScreen extends GetWidget<LeaveRequestController> {
     return CustomOutlinedButton(
         text: "lbl_submit".tr,
         height: 44.v,
-        buttonStyle: CustomButtonStyles.outlinePrimary,
-        buttonTextStyle: CustomTextStyles.titleSmallOnPrimary15
-        );
+        buttonStyle: CustomButtonStyles.outlinePrimaryTL6,
+        buttonTextStyle: CustomTextStyles.titleSmallOnPrimary15);
   }
 }

@@ -148,7 +148,7 @@ class AppDecoration {
           width: 1.h,
         ),
       );
-  static BoxDecoration get outlineGreen => BoxDecoration(
+  static BoxDecoration get outlineLightGreen => BoxDecoration(
         color: AppTheme.lightgreen400.withOpacity(0.24),
         border: Border.all(
           color: AppTheme.lightgreen400.withOpacity(0.72),
