@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:payroll_ui_model_gtx/utils/validation_functions.dart';
 import '../../core/widgets/custom_button_styles.dart';
 import '../../core/widgets/custom_elevated_button.dart';
 import '../../core/widgets/custom_text_form_field.dart';
@@ -8,11 +9,12 @@ import '../../themes/theme_helper.dart';
 import '../../utils/size_utils.dart';
 import 'controller/login_controller.dart';
 
-// ignore: must_be_immutable
-class LoginScreen extends GetWidget<LoginController> {
+class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final LoginController controller = Get.put(LoginController());
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,7 @@ class LoginScreen extends GetWidget<LoginController> {
                               Padding(
                                 padding: EdgeInsets.only(left: 2.h),
                                 child: Text(
-                                  "Hello!",
+                                  "lbl_hello".tr,
                                   style: CustomTextStyles.displayMediumBlack,
                                 ),
                               ),
@@ -58,7 +60,7 @@ class LoginScreen extends GetWidget<LoginController> {
                               Padding(
                                 padding: EdgeInsets.only(left: 2.h),
                                 child: Text(
-                                  "Welcome Back :)",
+                                  "lbl_welcome_back".tr,
                                   style: CustomTextStyles.titleMediumBold,
                                 ),
                               ),
@@ -66,7 +68,7 @@ class LoginScreen extends GetWidget<LoginController> {
                               Padding(
                                 padding: EdgeInsets.only(left: 2.h),
                                 child: Text(
-                                  "Please login to your account.",
+                                  "msg_please_login_to".tr,
                                   style: CustomTextStyles.labelLargeGray600,
                                 ),
                               ),
@@ -78,7 +80,7 @@ class LoginScreen extends GetWidget<LoginController> {
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: Text(
-                                  "Forgot Password?",
+                                  "msg_forgot_password".tr,
                                   style: CustomTextStyles
                                       .titleMediumTealA700SemiBold
                                       .copyWith(
@@ -88,8 +90,13 @@ class LoginScreen extends GetWidget<LoginController> {
                               ),
                               SizedBox(height: 30.v),
                               CustomElevatedButton(
-                                text: "Login",
+                                text: "lbl_login".tr,
                                 buttonStyle: CustomButtonStyles.fillTealA,
+                                onPressed: () {
+                                  if (formKey.currentState?.validate() ?? false) {
+                                
+                                  }
+                                },
                               ),
                               Spacer(),
                               SizedBox(height: 67.v),
@@ -99,7 +106,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: "Don't have an account? ",
+                                        text: "msg_dont_have_account2".tr,
                                         style: CustomTextStyles
                                             .bodyMediumBluegray500_1
                                             .copyWith(
@@ -107,7 +114,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                         ),
                                       ),
                                       TextSpan(
-                                        text: "SignUp",
+                                        text: "lbl_signup".tr,
                                         style: CustomTextStyles
                                             .labelLargeBluegray500Bold
                                             .copyWith(
@@ -116,6 +123,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                       ),
                                     ],
                                   ),
+                                  textAlign: TextAlign.left,
                                 ),
                               ),
                             ],
@@ -132,74 +140,93 @@ class LoginScreen extends GetWidget<LoginController> {
       ),
     );
   }
-}
 
-// Section Widget
-Widget buildInputFieldUsername(BuildContext context) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        "Username",
-        style: CustomTextStyles.bodyMediumGray50001,
-      ),
-      SizedBox(height: 6.v),
-      CustomTextFormField(
-        controller: Get.find<LoginController>().userNameController,
-        hintText: "Username",
-        hintStyle: CustomTextStyles.bodyLargeTealA700,
-        prefix: Container(
-          margin: EdgeInsets.fromLTRB(17.h, 13.v, 18.h, 13.v),
-          child: Icon(Icons.person),
-          height: 21.v,
-          width: 18.h,
+  Widget buildInputFieldUsername(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "lbl_username".tr,
+          style: CustomTextStyles.bodyMediumGray50001,
         ),
-        prefixConstraints: BoxConstraints(maxHeight: 48.v),
-        contentPadding: EdgeInsets.only(
-          top: 14.v,
-          right: 30.h,
-          bottom: 14.v,
+        SizedBox(height: 6.v),
+        CustomTextFormField(
+          controller: controller.userNameController,
+          hintText: "lbl_username".tr,
+          hintStyle: CustomTextStyles.bodyLargeTealA700,
+          prefix: Container(
+            margin: EdgeInsets.fromLTRB(17.h, 13.v, 18.h, 13.v),
+            child: Icon(Icons.person),
+            height: 21.v,
+            width: 18.h,
+          ),
+          prefixConstraints: BoxConstraints(maxHeight: 48.v),
+          validator: (value) {
+            if (!isText(value)) {
+              return "err_msg_please_enter_valid_text".tr;
+            }
+            return null;
+          },
+          contentPadding: EdgeInsets.only(
+            top: 14.v,
+            right: 30.h,
+            bottom: 14.v,
+          ),
+          borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
+          filled: false,
         ),
-        borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
-        filled: false,
-      ),
-    ],
-  );
-}
+      ],
+    );
+  }
 
-Widget buildInputFieldPassword(BuildContext context) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        "Password",
-        style: CustomTextStyles.bodyMediumGray50001,
-      ),
-      SizedBox(height: 6.v),
-      CustomTextFormField(
-        controller: Get.find<LoginController>().passwordController,
-        hintText: "* * * * * * * * * *",
-        hintStyle: CustomTextStyles.bodyLargeTealA700,
-        textInputAction: TextInputAction.done,
-        textInputType: TextInputType.visiblePassword,
-        prefix: Container(
-          margin: EdgeInsets.fromLTRB(17.h, 15.v, 17.h, 14.v),
-          child: Icon(Icons.shield_moon_outlined),
-          height: 21.v,
-          width: 18.h,
+  Widget buildInputFieldPassword(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "lbl_password".tr,
+          style: CustomTextStyles.bodyMediumGray50001,
         ),
-        prefixConstraints: BoxConstraints(maxHeight: 48.v),
-        suffix: Container(
-          margin: EdgeInsets.fromLTRB(30.h, 14.v, 15.h, 14.v),
-          child: Icon(Icons.enhanced_encryption_outlined),
-          height: 20.adaptSize,
-          width: 20.adaptSize,
-        ),
-        suffixConstraints: BoxConstraints(maxHeight: 48.v),
-        obscureText: true,
-        contentPadding: EdgeInsets.symmetric(vertical: 14.v),
-        borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
-      ),
-    ],
-  );
+        SizedBox(height: 6.v),
+        Obx(
+          () => CustomTextFormField(
+            controller: controller.passwordController,
+            hintText: "msg".tr,
+            hintStyle: CustomTextStyles.bodyLargeTealA700,
+            textInputAction: TextInputAction.done,
+            textInputType: TextInputType.visiblePassword,
+            prefix: Container(
+              margin: EdgeInsets.fromLTRB(17.h, 15.v, 17.h, 14.v),
+              child: Icon(Icons.shield_moon_outlined),
+              height: 21.v,
+              width: 18.h,
+            ),
+            prefixConstraints: BoxConstraints(maxHeight: 48.v),
+            suffix: InkWell(
+              onTap: () {
+                controller.isShowPassword.value =
+                    !controller.isShowPassword.value;
+              },
+              child: Container(
+                margin: EdgeInsets.fromLTRB(30.h, 14.v, 15.h, 14.v),
+                child: Icon(Icons.enhanced_encryption_outlined),
+                height: 20.adaptSize,
+                width: 20.adaptSize,
+              ),
+            ),
+            suffixConstraints: BoxConstraints(maxHeight: 48.v),
+            validator: (value) {
+              if (value == null || (!isValidPassword(value, isRequired: true))) {
+                return "err_msg_please_enter_valid_password".tr;
+              }
+              return null;
+            },
+            obscureText: controller.isShowPassword.value,
+            contentPadding: EdgeInsets.symmetric(vertical: 14.v),
+            borderDecoration: TextFormFieldStyleHelper.outlineTealATL6,
+          ),
+        )
+      ],
+    );
+  }
 }

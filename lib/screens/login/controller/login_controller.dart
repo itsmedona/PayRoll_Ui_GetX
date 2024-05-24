@@ -3,14 +3,15 @@ import 'package:get/get.dart';
 import '../models/login_model.dart';
 
 class LoginController extends GetxController {
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  Rx<LoginModel> loginModelObj = LoginModel().obs;
-  Rx<bool> isShowPassword = true.obs;
+  var loginModel = LoginModel().obs;
+  var userNameController = TextEditingController();
+  var passwordController = TextEditingController();
+  var isShowPassword = false.obs;
+
   @override
   void onClose() {
-    super.onClose();
     userNameController.dispose();
     passwordController.dispose();
+    super.onClose();
   }
 }
