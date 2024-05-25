@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/app_bar/appbar_subtitle.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/app_bar/custom_app_bar.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
-import 'package:payroll_ui_model_gtx/screens/attendence/attendence_screen.dart';
+
 import 'package:payroll_ui_model_gtx/themes/app_decoration.dart';
 import 'package:payroll_ui_model_gtx/utils/size_utils.dart';
 import '../../themes/theme_helper.dart';
@@ -19,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: theme.colorScheme.onPrimary,
-        appBar: buildAppbar(),
+        appBar: buildAppBar(),
         body: Container(
           width: 402.h,
           padding: EdgeInsets.symmetric(horizontal: 36.h, vertical: 43.v),
