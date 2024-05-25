@@ -82,4 +82,18 @@ final Map<String, String> enUS = {
   //Leave Request Screen
   "lbl_enter_reason": "Enter reason",
   "lbl_leave_request": "Leave Request",
+
+  //Profile Screen
+  "lbl_address": "Address :",
+  "lbl_band": "Band :",
+  "lbl_department3": "Department :",
+  "lbl_employee_id": "Employee Id : ",
+  "lbl_flutter": "Flutter",
+  "lbl_junior": "Junior",
+  "lbl_profile": "Profile",
+  "lbl_rizwan_ahamed": "Rizwan Ahamed",
+  "msg_jbasdfghjkl1": "jasdfghjkl345678sdfghj",
+  "msg_riswanahamed_gmail_com": "rizwanahamed@gmail.com",
+  "msg_simply_dummy_text":
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 };

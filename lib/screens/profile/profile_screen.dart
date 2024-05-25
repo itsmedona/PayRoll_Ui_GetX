@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/app_bar/appbar_subtitle.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/app_bar/custom_app_bar.dart';
 import 'package:payroll_ui_model_gtx/core/widgets/custom_text_styles.dart';
