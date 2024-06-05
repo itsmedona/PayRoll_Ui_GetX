@@ -44,7 +44,7 @@ class AppRoutes {
     GetPage(
       name: signupWithOtpScreen,
       page: () => SignupWithOtpScreen(),
-      //bindings: [HomeScreenBinding()],
+      //bindings:[()],
     ),
     GetPage(
       name: homeScreen,
